@@ -3,91 +3,84 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AtivaTV - Oficial - Teste Grátis IPTV</title>
+<title>AtivaTV - Oficial - Teste IPTV em 2 Minutos</title>
 <style>
-:root { --accent: #00ff88; --secondary: #00d2ff; --bg: #050505; --card: #111; }
+:root { --accent: #ffcc00; --secondary: #00d2ff; --bg: #0a0a0b; --card: #1c1c1e; }
 * { box-sizing: border-box; scroll-behavior: smooth; }
-body { font-family: 'Segoe UI', Arial, sans-serif; background-color: var(--bg); color: #fff; margin: 0; padding: 0; }
+body { font-family: 'Inter', sans-serif; background-color: var(--bg); color: #fff; margin: 0; padding: 0; text-align: center; }
 
-.navbar { display: flex; justify-content: space-between; align-items: center; padding: 20px 5%; background: rgba(0,0,0,0.9); position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(10px); border-bottom: 1px solid #222; }
+.navbar { display: flex; justify-content: space-between; align-items: center; padding: 15px 5%; background: #000; position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid #333; }
 .logo { font-size: 1.5rem; font-weight: 900; color: var(--secondary); }
-.menu a { color: white; text-decoration: none; margin: 0 10px; font-weight: 600; font-size: 0.8rem; }
 
-.hero { padding: 100px 20px; text-align: center; background: radial-gradient(circle, #1a1a1c, #050505); }
-h1 { font-size: clamp(2.2rem, 6vw, 4rem); margin: 0; }
-.hero span { color: var(--accent); }
+.hero { padding: 80px 20px; background: radial-gradient(circle, #1a1a1c, #050505); }
+.cta-btn { background: #25d366; color: white; padding: 20px 45px; font-size: 1.4rem; font-weight: 800; text-decoration: none; border-radius: 50px; display: inline-block; margin-top: 20px; box-shadow: 0 10px 30px rgba(37, 211, 102, 0.3); }
 
-.cta-btn { background: #25d366; color: white; padding: 20px 45px; font-size: 1.4rem; font-weight: 800; text-decoration: none; border-radius: 50px; display: inline-block; margin-top: 30px; box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3); animation: pulse 2s infinite; }
-@keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
+.section { padding: 60px 5%; }
+h2 { font-size: 2rem; margin-bottom: 40px; }
 
-.section { padding: 80px 10%; max-width: 1300px; margin: 0 auto; text-align: center; border-top: 1px solid #111; }
-.app-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 25px; margin-top: 50px; }
-.app-card { background: var(--card); padding: 30px; border-radius: 20px; border: 1px solid #222; transition: 0.3s; }
-.app-card:hover { border-color: var(--secondary); transform: translateY(-5px); background: #161616; }
-.app-img { width: 90px; height: 90px; border-radius: 20px; margin: 0 auto 20px; display: block; object-fit: cover; box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
-.app-card h3 { color: var(--secondary); font-size: 1.1rem; margin-bottom: 5px; }
-.verified { color: var(--accent); font-size: 0.75rem; font-weight: bold; }
+.grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
+.card { background: var(--card); padding: 25px; border-radius: 20px; width: 180px; transition: 0.3s; border: 1px solid #333; }
+.card:hover { border-color: var(--secondary); transform: translateY(-5px); }
+.card img { width: 80px; height: 80px; border-radius: 15px; margin-bottom: 15px; object-fit: contain; }
+.stars { color: var(--accent); font-size: 0.8rem; margin-bottom: 10px; display: block; }
+.card h3 { font-size: 1rem; margin: 0; opacity: 0.9; }
 
-footer { padding: 40px; border-top: 1px solid #111; text-align: center; opacity: 0.4; font-size: 0.8rem; }
+.device-card { background: #2c2c2e; padding: 20px; border-radius: 15px; width: 140px; text-align: center; border: 1px solid #444; }
+.device-card img { width: 60px; height: 60px; margin-bottom: 10px; filter: grayscale(1) invert(1); opacity: 0.7; }
 </style>
 </head>
 <body>
-<nav class="navbar">
-<div class="logo">ATIVA TV 📺</div>
-<div class="menu">
-<a href="#">INÍCIO</a>
-<a href="#apps">APPS OFICIAIS</a>
-<a href="https://api.whatsapp.com/send?phone=5513998074576" style="color: var(--accent);">TESTAR AGORA</a>
-</div>
-</nav>
+<nav class="navbar"><div class="logo">ATIVA TV 📺</div></nav>
 
 <header class="hero">
-<h1>Grade Completa 4K <br> <span>Sinal Vip por 10 Pilas!</span></h1>
-<p style="opacity: 0.8; margin-top: 20px;">Filmes, Séries e Futebol ao vivo sem antenas.</p>
-<a href="https://api.whatsapp.com/send?phone=5513998074576&text=Olá!%20Vi%20a%20AtivaTV%20e%20quero%20meu%20teste%20grátis!" class="cta-btn">LIBERAR MEU TESTE AGORA</a>
+<h1>Sua TV Completa <br> por <span style="color: #00ff88;">10 Pilas!</span></h1>
+<p>Acesse 60.000 conteúdos em 4K sem antenas.</p>
+<a href="https://api.whatsapp.com/send?phone=5513998074576" class="cta-btn">LIBERAR MEU TESTE GRÁTIS</a>
 </header>
 
-<section id="apps" class="section">
-<h2>Baixe nossos Apps Oficiais 📲</h2>
-<p>Garantimos a melhor estabilidade e qualidade nos aplicativos abaixo:</p>
-
-<div class="app-grid">
-<div class="app-card">
-<img src="https://play-lh.googleusercontent.com/sZhx9HbFyQ7UIS5JYy2fYsJJnaOBD3-Y0jc9hoe9lQ6GX1kB4K2K9wdYHobKvWkSqwA" class="app-img">
+<section class="section">
+<h2>Nossos Aplicativos 📲</h2>
+<div class="grid">
+<div class="card">
+<img src="https://play-lh.googleusercontent.com/sZhx9HbFyQ7UIS5JYy2fYsJJnaOBD3-Y0jc9hoe9lQ6GX1kB4K2K9wdYHobKvWkSqwA">
+<span class="stars">★★★★★</span>
 <h3>Blessed Player</h3>
-<span class="verified">✓ OFICIAL</span>
 </div>
-<div class="app-card">
-<img src="https://m.media-amazon.com/images/I/81VIPvLxCiL.png" class="app-img">
+<div class="card">
+<img src="https://m.media-amazon.com/images/I/81VIPvLxCiL.png">
+<span class="stars">★★★★★</span>
 <h3>Assist Plus</h3>
-<span class="verified">✓ OFICIAL</span>
 </div>
-<div class="app-card">
-<img src="https://play-lh.googleusercontent.com/mGSPViod7S3Vyh0qRECCrRc-2ZJlNyN7sqlnUQs2dqxMm3UkTORReDump3egIoZ1r59o42heSFlsMSqBf5K" class="app-img">
+<div class="card">
+<img src="https://play-lh.googleusercontent.com/mGSPViod7S3Vyh0qRECCrRc-2ZJlNyN7sqlnUQs2dqxMm3UkTORReDump3egIoZ1r59o42heSFlsMSqBf5K=w240-h480-rw">
+<span class="stars">★★★★★</span>
 <h3>Fun Play</h3>
-<span class="verified">✓ OFICIAL</span>
 </div>
-<div class="app-card">
-<img src="https://play-lh.googleusercontent.com/mpiK0UdwToVpAqCI5nDtLsppEq3u4Utc5gJhDthqKYImu9jxZ7uzRP032845EIb_vg" class="app-img">
+<div class="card">
+<img src="https://play-lh.googleusercontent.com/mpiK0UdwToVpAqCI5nDtLsppEq3u4Utc5gJhDthqKYImu9jxZ7uzRP032845EIb_vg">
+<span class="stars">★★★★★</span>
 <h3>Lazer Play</h3>
-<span class="verified">✓ OFICIAL</span>
 </div>
-<div class="app-card">
-<img src="https://m.media-amazon.com/images/I/61QjUxDNMRL.png" class="app-img">
+<div class="card">
+<img src="https://m.media-amazon.com/images/I/61QjUxDNMRL.png">
+<span class="stars">★★★★★</span>
 <h3>Playsim</h3>
-<span class="verified">✓ OFICIAL</span>
-</div>
-<div class="app-card">
-<img src="https://img.utdstc.com/icon/5d7/835/5d7835a806b1cdc5d7427879634e5417a12f8c94e6dab633dcd7ff81be9115a1:200" class="app-img">
-<h3>IPTV Smarters</h3>
-<span class="verified">✓ OFICIAL</span>
 </div>
 </div>
 </section>
 
-<footer>
-© 2026 AtivaTV - O melhor sinal do Brasil. <br>
-Progresso e Parceria constante! 🤙🏻💎🔥
-</footer>
+<section class="section" style="background: #000;">
+<h2>Dispositivos Compatíveis 📺📱📦</h2>
+<div class="grid">
+<div class="device-card"><h3>SAMSUNG</h3><span class="stars">★★★★★</span></div>
+<div class="device-card"><h3>LG</h3><span class="stars">★★★★★</span></div>
+<div class="device-card"><h3>FIRE TV</h3><span class="stars">★★★★★</span></div>
+<div class="device-card"><h3>ANDROID</h3><span class="stars">★★★★★</span></div>
+<div class="device-card"><h3>IPHONE</h3><span class="stars">★★★★★</span></div>
+<div class="device-card"><h3>ROKU</h3><span class="stars">★★★★★</span></div>
+</div>
+</section>
+
+<footer>© 2026 AtivaTV - O melhor sinal do Brasil! 🤙🏻🔥</footer>
 </body>
 </html>
