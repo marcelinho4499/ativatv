@@ -3,55 +3,91 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AtivaTV - Teste IPTV Grátis</title>
+<title>AtivaTV - A TV do Futuro por 10 Pilas</title>
 <style>
-:root { --accent: #ff9900; --bg: #0a0a0b; --card: #141416; }
-body { font-family: sans-serif; background-color: var(--bg); color: #fff; margin: 0; padding: 0; line-height: 1.5; }
-.nav { display: flex; justify-content: space-between; align-items: center; padding: 15px 5%; background: #000; border-bottom: 1px solid #222; }
-.logo { font-size: 1.5rem; font-weight: 900; color: var(--accent); }
-.menu a { color: white; text-decoration: none; margin: 0 10px; font-weight: 600; font-size: 0.8rem; }
-.hero { padding: 80px 5%; text-align: left; background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1593305841991-05c297ba4575?w=800'); background-size: cover; }
-h1 { font-size: 3rem; line-height: 1.1; }
-.highlight { color: var(--accent); }
-.cta-btn { background: var(--accent); color: #000; padding: 20px 40px; font-size: 1.2rem; font-weight: 800; text-decoration: none; border-radius: 10px; display: inline-block; margin: 20px 0; }
-.section-white { background: #fff; color: #000; padding: 60px 5%; text-align: center; }
-.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; max-width: 1200px; margin: 0 auto; }
-.card { padding: 30px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); background: #f4f4f4; }
-.testimonials { padding: 60px 5%; text-align: center; }
-.t-card { background: #141416; padding: 20px; border-radius: 10px; margin: 10px; border: 1px solid #333; text-align: left; }
+:root { --primary: #00ff88; --secondary: #00d2ff; --bg: #050505; --card: #111; }
+* { box-sizing: border-box; scroll-behavior: smooth; }
+body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: var(--bg); color: #fff; margin: 0; padding: 0; }
+
+.navbar { display: flex; justify-content: space-between; align-items: center; padding: 20px 5%; background: rgba(0,0,0,0.9); position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(10px); border-bottom: 1px solid #222; }
+.logo { font-size: 1.5rem; font-weight: 900; color: var(--secondary); text-transform: uppercase; }
+.menu a { color: white; text-decoration: none; margin: 0 15px; font-weight: 600; font-size: 0.8rem; transition: 0.3s; opacity: 0.8; }
+.menu a:hover { color: var(--primary); opacity: 1; }
+
+.hero { padding: 120px 20px; text-align: center; background: radial-gradient(circle at center, #1a1a1a 0%, #050505 100%); }
+.badge { background: #00ff88; color: black; padding: 5px 15px; border-radius: 5px; font-weight: 900; font-size: 0.8rem; margin-bottom: 20px; display: inline-block; }
+h1 { font-size: clamp(2.5rem, 8vw, 4.5rem); margin: 0; line-height: 1; }
+.hero span { color: var(--secondary); }
+
+.cta-btn { background: #25d366; color: white; padding: 22px 50px; font-size: 1.5rem; font-weight: 800; text-decoration: none; border-radius: 50px; display: inline-block; margin-top: 40px; box-shadow: 0 10px 30px rgba(37, 211, 102, 0.3); animation: pulse 2s infinite; }
+@keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
+
+.section { padding: 100px 10%; max-width: 1200px; margin: 0 auto; text-align: center; border-top: 1px solid #111; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 50px; }
+.card { background: var(--card); padding: 40px; border-radius: 20px; border: 1px solid #222; transition: 0.3s; text-align: left; }
+.card:hover { border-color: var(--secondary); background: #161616; transform: translateY(-5px); }
+.card h3 { color: var(--secondary); font-size: 1.5rem; margin-top: 0; }
+
+.app-list { list-style: none; padding: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin-top: 30px; }
+.app-item { background: #222; padding: 10px 20px; border-radius: 10px; font-weight: bold; border: 1px solid #333; color: var(--primary); }
+
+footer { padding: 60px; border-top: 1px solid #111; text-align: center; opacity: 0.4; font-size: 0.8rem; }
 </style>
 </head>
 <body>
-<nav class="nav">
-<div class="logo">ATIVA TV</div>
+<nav class="navbar">
+<div class="logo">AtivaTV</div>
 <div class="menu">
-<a href="#">Início</a>
-<a href="#testes">Como Funciona</a>
-<a href="https://api.whatsapp.com/send?phone=5513998074576" style="background:var(--accent); color:black; padding:8px 15px; border-radius:5px;">TESTE GRÁTIS</a>
+<a href="#">INÍCIO</a>
+<a href="#iptv">O QUE É IPTV?</a>
+<a href="#dispositivos">DISPOSITIVOS</a>
+<a href="https://api.whatsapp.com/send?phone=5513998074576&text=Olá!%20Vi%20a%20AtivaTV%20e%20quero%20um%20teste!" style="color: var(--primary);">TESTAR GRÁTIS</a>
 </div>
 </nav>
-<section class="hero">
-<p style="color:var(--accent); font-weight:bold;">G ★★★★★ +22.087 avaliações</p>
-<h1>Teste IPTV Grátis <br> <span class="highlight">AUTOMATIZADO</span></h1>
-<p>Receba seu acesso em menos de 2 minutos pelo nosso robô no WhatsApp.</p>
-<a href="https://api.whatsapp.com/send?phone=5513998074576" class="cta-btn">INICIAR TESTE AGORA</a>
-</section>
-<section class="section-white">
-<h2>Sistema 100% Robotizado</h2>
-<div class="grid">
-<div class="card"><h3>🤖 Robô Luan</h3><p>Atendimento 24h por dia, sem filas.</p></div>
-<div class="card"><h3>⚡️ Envio Imediato</h3><p>Seu login é gerado na hora.</p></div>
-<div class="card"><h3>📺 Qualidade 4K</h3><p>O melhor sinal do Brasil por 10 pilas.</p></div>
+
+<header class="hero">
+<div class="badge">SINAL 4K REAL - ATIVAÇÃO EM 2 MINUTOS</div>
+<h1>Toda a Grade de TV <br> <span>Liberada por 10 Pilas!</span></h1>
+<p style="font-size: 1.4rem; opacity: 0.8; margin-top: 20px;">Futebol, Cinema, Séries e Canais Infantis sem antenas e sem travamentos.</p>
+<a href="https://api.whatsapp.com/send?phone=5513998074576&text=Olá!%20Vi%20a%20AtivaTV%20e%20quero%20meu%20teste%20grátis!" class="cta-btn">LIBERAR MEU TESTE AGORA</a>
+</header>
+
+<section id="iptv" class="section">
+<h2>A Televisão do Futuro 🚀</h2>
+<div class="card" style="max-width: 800px; margin: 0 auto; text-align: center;">
+<p style="font-size: 1.2rem;">O IPTV é a forma definitiva de assistir televisão. Chega de pagar caro em operadoras tradicionais! Com a <strong>AtivaTV</strong>, você usa sua própria internet para acessar milhares de conteúdos com qualidade cinema por um preço que cabe no seu bolso.</p>
 </div>
 </section>
-<section class="testimonials">
-<h2>O que dizem sobre nós</h2>
+
+<section id="dispositivos" class="section">
+<h2>Onde você pode assistir?</h2>
+<p>Somos compatíveis com todos os seus aparelhos favoritos!</p>
 <div class="grid">
-<div class="t-card">"Gostei demais! O Luan enviou meu teste rápido. Sinal pica!"<br><strong>- Ricardo S.</strong></div>
-<div class="t-card">"Finalmente um IPTV que não trava. Atendimento nota 10."<br><strong>- Carlos P.</strong></div>
-<div class="t-card">"Preço imbatível e qualidade de cinema."<br><strong>- Fernanda M.</strong></div>
+<div class="card">
+<h3>📺 Smart TV</h3>
+<p>Compatível com Samsung, LG, TCL e Android TV. Recomendamos os apps <strong>Blessed Player</strong> e <strong>Assist Plus</strong>.</p>
+</div>
+<div class="card">
+<h3>📦 TV Box / Stick</h3>
+<p>O sinal mais estável para Fire Stick, Mi Box e qualquer TV Box do mercado. Use <strong>Fun Play</strong> ou <strong>IPTV Smarters</strong>.</p>
+</div>
+<div class="card">
+<h3>📱 Celular / Tablet</h3>
+<p>Assista de onde estiver no seu Android ou iPhone. Acesso rápido via código ou lista personalizada.</p>
+</div>
+</div>
+<div class="app-list">
+<div class="app-item">🟢 BLESSED PLAYER</div>
+<div class="app-item">🟢 ASSIST PLUS</div>
+<div class="app-item">🟢 FUN PLAY</div>
+<div class="app-item">🟢 LAZER PLAY</div>
+<div class="app-item">🟡 IPTV SMARTERS</div>
 </div>
 </section>
-<footer style="padding:40px; text-align:center; border-top:1px solid #333; opacity:0.5;">© 2026 AtivaTV - Conexão e Progresso.</footer>
+
+<footer>
+© 2026 AtivaTV - Qualidade Premium com Preço Popular. <br>
+O progresso não para! 🤙🏻🔥🚀
+</footer>
 </body>
 </html>
