@@ -1,147 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AtivaTV - Oficial - Grade 4K</title>
 <style>
 :root { --accent: #ffcc00; --secondary: #00d2ff; --bg: #050505; --card: #1c1c1e; }
 * { box-sizing: border-box; scroll-behavior: smooth; }
-body { font-family: 'Inter', Arial, sans-serif; background-color: var(--bg); color: #fff; margin: 0; padding: 0; text-align: center; }
+body { font-family: 'Inter', Arial, sans-serif; background-color: var(--bg); color: #fff; margin: 0; padding: 0; text-align: center; overflow-x: hidden; }
 
-.navbar { padding: 15px 5%; background: #000; border-bottom: 1px solid #222; position: sticky; top: 0; z-index: 1000; display: flex; justify-content: space-between; align-items: center; }
+/* NAVBAR */
+.navbar { padding: 15px 5%; background: rgba(0,0,0,0.95); position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid #222; display: flex; justify-content: space-between; align-items: center; backdrop-filter: blur(10px); }
 .logo { font-size: 1.5rem; font-weight: 900; color: var(--secondary); text-transform: uppercase; }
-.menu a { color: white; text-decoration: none; margin: 0 10px; font-weight: 600; font-size: 0.8rem; }
+.menu a { color: white; text-decoration: none; margin: 0 10px; font-weight: 600; font-size: 0.85rem; }
 
-.hero { padding: 80px 20px; background: radial-gradient(circle, #1a1a1c, #050505); border-bottom: 1px solid #111; }
-.hero h1 { font-size: 2.8rem; margin: 0; line-height: 1.2; }
-.cta-btn { background: #25d366; color: white; padding: 20px 45px; font-size: 1.4rem; font-weight: 800; text-decoration: none; border-radius: 50px; display: inline-block; margin-top: 25px; box-shadow: 0 10px 20px rgba(0,0,0,0.3); }
-
-.section { padding: 60px 5%; border-top: 1px solid #111; }
-h2 { font-size: 2rem; margin-bottom: 40px; font-weight: 800; }
-
-.video-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin-bottom: 20px; }
-.video-card { width: 170px; border-radius: 12px; overflow: hidden; border: 2px solid #333; height: 250px; }
-.video-card video { width: 100%; height: 100%; object-fit: cover; }
-
-.grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
-.card { background: var(--card); padding: 25px 15px; border-radius: 25px; width: 165px; border: 1px solid #444; transition: 0.3s; }
-.card:hover { transform: translateY(-5px); border-color: var(--secondary); }
-.card img { width: 85px; height: 85px; border-radius: 18px; margin-bottom: 12px; background: #000; padding: 5px; object-fit: contain; }
-.stars { color: var(--accent); font-size: 0.75rem; display: block; margin-bottom: 8px; }
-</style>
-
-<!-- MÓDULO 1: CABEÇALHO PREMIUM COM CHECKS CENTRALIZADOS -->
-<style>
+/* ANIMAÇÃO DO BOTÃO */
 @keyframes pulse-green {
 0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); transform: scale(1); }
-70% { box-shadow: 0 0 0 20px rgba(37, 211, 102, 0); transform: scale(1.05); }
+70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); transform: scale(1.03); }
 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); transform: scale(1); }
 }
 .btn-pica {
 background: #25d366 !important;
 color: white !important;
-padding: 22px 50px !important;
-border-radius: 15px !important;
-font-size: 1.4rem !important;
+padding: 15px 35px !important;
+border-radius: 12px !important;
+font-size: 1.1rem !important;
 font-weight: 900 !important;
 text-decoration: none !important;
-display: block !important; /* MUDADO PARA BLOCK PRA CENTRALIZAR MELHOR */
-max-width: 450px;
-text-align: center;
+display: inline-block !important;
 animation: pulse-green 2s infinite !important;
-cursor: pointer;
 border: none;
 }
+
+/* CABEÇALHO HERO */
 .hero-premium {
 display: flex;
 flex-wrap: wrap;
 align-items: center;
 justify-content: space-around;
-padding: 120px 8%;
+padding: 80px 8%;
 text-align: left;
 background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), url('https://iili.io/fmFdFhF.png');
 background-size: cover;
 background-position: center;
 border-bottom: 2px solid #111;
 }
-</style>
 
-<nav class="navbar" style="background: rgba(0,0,0,0.95); position: sticky; top: 0; z-index: 1000; padding: 20px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #222;">
-<div class="logo" style="font-size: 1.6rem; font-weight: 900; color: #00d2ff;">ATIVA TV 📺</div>
+/* ESTILO DOS CARDS */
+.section { padding: 40px 5%; border-top: 1px solid #111; }
+.video-grid, .grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin-bottom: 20px; }
+.card { background: var(--card); padding: 25px 15px; border-radius: 25px; width: 160px; border: 1px solid #333; transition: 0.3s; }
+.card img { width: 80px; height: 80px; border-radius: 15px; margin-bottom: 12px; background: #000; padding: 5px; object-fit: contain; }
+.stars { color: var(--accent); font-size: 0.7rem; display: block; margin-bottom: 5px; }
+.video-card { width: 170px; border-radius: 12px; overflow: hidden; border: 2px solid #333; height: 250px; }
+.video-card video { width: 100%; height: 100%; object-fit: cover; }
+</style>
+</head>
+<body>
+<nav class="navbar">
+<div class="logo">ATIVA TV 📺</div>
 <div class="menu">
-<a href="#" style="color: white; text-decoration: none; margin: 0 15px; font-weight: 600;">INÍCIO</a>
-<a href="#apps" style="color: white; text-decoration: none; margin: 0 15px; font-weight: 600;">APPS</a>
-<a href="https://api.whatsapp.com/send?phone=5513998074576" style="color: #25d366; text-decoration: none; font-weight: 900; border: 1px solid #25d366; padding: 10px 20px; border-radius: 10px;">ZAP OFICIAL</a>
+<a href="#">INÍCIO</a>
+<a href="#apps">APPS</a>
+<a href="https://api.whatsapp.com/send?phone=5513998074576" style="color: #25d366; font-weight: 800;">ZAP OFICIAL</a>
 </div>
 </nav>
 
 <header class="hero-premium">
-<!-- LADO ESQUERDO: TEXTO -->
-<div style="flex: 1; min-width: 320px; max-width: 550px; margin-right: 40px;">
-<div style="color: #ff9900; font-weight: 900; margin-bottom: 20px; background: rgba(255,153,0,0.1); padding: 8px 15px; border-radius: 5px; display: inline-block; font-size: 0.8rem;">⭐️ +22.000 CLIENTES SATISFEITOS</div>
-<h1 style="font-size: clamp(2rem, 5vw, 3.2rem); line-height: 1.1; margin: 0; font-weight: 900;">Toda a Grade 4K <br> <span style="color: #ff9900; font-size: 2.8rem; text-shadow: 0 0 20px rgba(255,153,0,0.3);">por apenas 10 Pilas!</span></h1>
-<p style="font-size: 1.1rem; opacity: 0.9; margin: 30px 0; line-height: 1.5;">
-Atendimento VIP com o <b>Lost</b> no suporte! 🤖✨ O melhor do futebol, filmes e séries sem travamentos. Ativação em 2 minutos!
-</p>
-
-<!-- CONTAINER PRA CENTRALIZAR O BOTÃO E OS CHECKS -->
-<div style="display: flex; flex-direction: column; align-items: flex-start;">
-<a href="https://api.whatsapp.com/send?phone=5513998074576&text=Olá!%20Vi%20a%20AtivaTV%20e%20quero%20meu%20teste%20grátis!" class="btn-pica">LIBERAR MEU ACESSO AGORA 🚀</a>
-
-<div style="width: 100%; max-width: 450px; text-align: center; margin-top: 15px; color: #00ff88; font-weight: 600; font-size: 0.9rem; display: flex; justify-content: center; gap: 10px;">
-<span>✓ Ativação em 2 min</span>
-<span>✓ Sem Antenas</span>
-<span>✓ Suporte 24h</span>
+<div style="flex: 1; min-width: 320px; max-width: 550px; margin-right: 20px;">
+<div style="color: #ff9900; font-weight: 900; margin-bottom: 15px; background: rgba(255,153,0,0.1); padding: 6px 12px; border-radius: 5px; display: inline-block; font-size: 0.75rem;">⭐️ +22.000 CLIENTES SATISFEITOS</div>
+<h1 style="font-size: 2.5rem; line-height: 1.1; margin: 0; font-weight: 900;">Toda a Grade 4K <br> <span style="color: #ff9900; text-shadow: 0 0 15px rgba(255, 153, 0, 0.6);">por apenas 10 Pilas!</span></h1>
+<p style="font-size: 1rem; opacity: 0.9; margin: 20px 0; line-height: 1.5;">Atendimento VIP com o <b>Lost</b> 🤖✨ Futebol, filmes e séries sem travamentos. Ativação em 2 minutos!</p>
+<a href="https://api.whatsapp.com/send?phone=5513998074576" class="btn-pica">LIBERAR MEU ACESSO AGORA 🚀</a>
+<div style="margin-top: 15px; color: #00ff88; font-weight: 600; font-size: 0.85rem; display: flex; gap: 10px;">
+<span>✓ Ativação 2 min</span><span>✓ Sem Antenas</span><span>✓ Suporte 24h</span>
 </div>
 </div>
-</div>
-
-<!-- LADO DIREITO: IMAGEM -->
-<div style="flex: 1; min-width: 320px; text-align: right; padding: 20px;">
-<img src="https://iili.io/fmF9FXs.png" alt="IPTV Interface" style="width: 100%; max-width: 460px; border-radius: 20px; box-shadow: 0 30px 60px rgba(0,0,0,0.8); border: 2px solid #333;">
+<div style="flex: 1; min-width: 320px; text-align: center; padding: 20px;">
+<img src="https://iili.io/fmF9FXs.png" style="width: 100%; max-width: 440px; border-radius: 20px; box-shadow: 0 20px 50px rgba(0,0,0,0.8); border: 2px solid #333;">
 </div>
 </header>
 
-
-
-<!-- MÓDULO 2: CORPO (CONTEÚDOS + APPS + DISPOSITIVOS) -->
 <main style="background: #050505;">
-
-<section id="conteudos" class="section" style="padding: 40px 5%; border-top: 1px solid #111;">
-<h2 style="margin-bottom: 25px;">Nossos Conteúdos 🎬⚽️</h2>
+<section class="section">
+<h2>Nossos Conteúdos 🎬⚽️</h2>
 <div class="video-grid">
-<div class="video-card"><video autoplay muted loop playsinline><source src="https://funplay.app.br/_assets/video/d152b85ab0b46c88b7ebb7fb67b7ba2c.mp4" type="video/mp4"></video></div>
-<div class="video-card"><video autoplay muted loop playsinline><source src="https://funplay.app.br/_assets/video/02e2e98834eb0c631861092a855e8f31.mp4" type="video/mp4"></video></div>
-<div class="video-card"><video autoplay muted loop playsinline><source src="https://funplay.app.br/_assets/video/f5eb27c96cf400a30d65b3da8cf607d1.mp4" type="video/mp4"></video></div>
-<div class="video-card"><video autoplay muted loop playsinline><source src="https://funplay.app.br/_assets/video/b54cf109673d12ddf6d4092d46fc46a0.mp4" type="video/mp4"></video></div>
-<div class="video-card"><video autoplay muted loop playsinline><source src="https://funplay.app.br/_assets/video/82a02e3b67ac9e75898e193e5db78a77.mp4" type="video/mp4"></video></div>
-<div class="video-card"><video autoplay muted loop playsinline><source src="https://funplay.app.br/_assets/video/29f88b52f7c09f04e421e17d25470f38.mp4" type="video/mp4"></video></div>
-</div>
-<p style="opacity: 0.7; font-size: 0.9rem; max-width: 800px; margin: 0 auto;">TV aberta, fechada, esportes e cinema na sua casa 24h por dia.</p>
-</section>
-
-<section id="apps" class="section" style="padding: 40px 5%; border-top: 1px solid #111;">
-<h2 style="margin-bottom: 25px;">Nossos Aplicativos 📲</h2>
-<div class="grid">
-<div class="card"><img src="https://play-lh.googleusercontent.com/sZhx9HbFyQ7UIS5JYy2fYsJJnaOBD3-Y0jc9hoe9lQ6GX1kB4K2K9wdYHobKvWkSqwA"><span class="stars">★★★★★</span><h4>Blessed</h4></div>
-<div class="card"><img src="https://m.media-amazon.com/images/I/81VIPvLxCiL.png"><span class="stars">★★★★★</span><h4>Assist Plus</h4></div>
-<div class="card"><img src="https://iili.io/fmHh3Al.jpg"><span class="stars">★★★★★</span><h4>Fun Play</h4></div>
-<div class="card"><img src="https://play-lh.googleusercontent.com/mpiK0UdwToVpAqCI5nDtLsppEq3u4Utc5gJhDthqKYImu9jxZ7uzRP032845EIb_vg"><span class="stars">★★★★★</span><h4>Lazer Play</h4></div>
-
-<div class="card"><img src="https://m.media-amazon.com/images/I/61QjUxDNMRL.png"><span class="stars">★★★★★</span><h4>Playsim</h4></div>
-<div class="card"><img src="https://img.utdstc.com/icon/5d7/835/5d7835a806b1cdc5d7427879634e5417a12f8c94e6dab633dcd7ff81be9115a1:200"><span class="stars">★★★★★</span><h4>Smarters Pro</h4></div>
+<div class="video-card"><video autoplay muted loop playsinline><source src="https://funplay.app.br/_assets/video/d152b85ab0b46c88b7ebb7fb67b7ba2c.mp4"></video></div>
+<div class="video-card"><video autoplay muted loop playsinline><source src="https://funplay.app.br/_assets/video/02e2e98834eb0c631861092a855e8f31.mp4"></video></div>
+<div class="video-card"><video autoplay muted loop playsinline><source src="https://funplay.app.br/_assets/video/f5eb27c96cf400a30d65b3da8cf607d1.mp4"></video></div>
+<div class="video-card"><video autoplay muted loop playsinline><source src="https://funplay.app.br/_assets/video/b54cf109673d12ddf6d4092d46fc46a0.mp4"></video></div>
 </div>
 </section>
 
-<section class="section" style="padding: 40px 5%; border-top: 1px solid #111;">
-<h2 style="margin-bottom: 25px;">Dispositivos Compatíveis 📺</h2>
+<section id="apps" class="section">
+<h2>Nossos Aplicativos 📲</h2>
 <div class="grid">
-<div class="card" style="width: 140px; min-height: 180px;"><div style="font-size: 3rem; margin-bottom: 10px;">📺</div><h4>SAMSUNG</h4></div>
-<div class="card" style="width: 140px; min-height: 180px;"><div style="font-size: 3rem; margin-bottom: 10px;">🖥️</div><h4>LG TV</h4></div>
-<div class="card" style="width: 140px; min-height: 180px;"><div style="font-size: 3rem; margin-bottom: 10px;">🔥</div><h4>FIRE TV</h4></div>
-<div class="card" style="width: 140px; min-height: 180px;"><div style="font-size: 3rem; margin-bottom: 10px;">🤖</div><h4>ANDROID</h4></div>
-<div class="card" style="width: 140px; min-height: 180px;"><div style="font-size: 3rem; margin-bottom: 10px;">🪟</div><h4>WINDOWS</h4></div>
-<div class="card" style="width: 140px; min-height: 180px;"><div style="font-size: 3rem; margin-bottom: 10px;">🟣</div><h4>ROKU TV</h4></div>
+<div class="card"><img src="https://play-lh.googleusercontent.com/sZhx9HbFyQ7UIS5JYy2fYsJJnaOBD3-Y0jc9hoe9lQ6GX1kB4K2K9wdYHobKvWkSqwA"><h4>Blessed</h4></div>
+<div class="card"><img src="https://m.media-amazon.com/images/I/81VIPvLxCiL.png"><h4>Assist Plus</h4></div>
+<div class="card"><img src="https://iili.io/fmHh3Al.jpg"><h4>Fun Play</h4></div>
+<div class="card"><img src="https://m.media-amazon.com/images/I/61QjUxDNMRL.png"><h4>Playsim</h4></div>
+</div>
+</section>
+
+<section class="section">
+<h2>Dispositivos Compatíveis 📺</h2>
+<div class="grid">
+<div class="card" style="width: 140px; min-height: 160px;"><div style="font-size: 2.5rem;">📺</div><h4>SAMSUNG</h4></div>
+<div class="card" style="width: 140px; min-height: 160px;"><div style="font-size: 2.5rem;">🖥️</div><h4>LG TV</h4></div>
+<div class="card" style="width: 140px; min-height: 160px;"><div style="font-size: 2.5rem;">🤖</div><h4>ANDROID</h4></div>
 </div>
 </section>
 </main>
 
-<!-- MÓDULO 3: RODAPÉ (FOOTER) -->
-<footer style="padding: 60px 5%; border-top: 1px solid #111; text-align: center; opacity: 0.5; font-size: 0.8rem; background: #000;">
-<p>© 2026 ATIVATV - ONDE O PROGRESSO ROTEIA! 🤙🏻🔥🚀</p>
+<footer style="padding: 40px; opacity: 0.5; font-size: 0.8rem;">
+<p>© 2026 ATIVATV - ONDE O PROGRESSO ROTEIA! 🤙🏻🔥</p>
 </footer>
+</body>
+</html>
