@@ -25,7 +25,7 @@ h2 { font-size: 2rem; margin-bottom: 40px; font-weight: 800; }
 .stars { color: var(--accent); font-size: 0.75rem; display: block; margin-bottom: 8px; }
 </style>
 
-<!-- MÓDULO 1: CABEÇALHO PREMIUM COM BOTÃO QUE PISCA -->
+<!-- MÓDULO 1: CABEÇALHO COM FUNDO DE CINEMA MÁGICO -->
 <style>
 @keyframes pulse-green {
 0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); transform: scale(1); }
@@ -35,50 +35,58 @@ h2 { font-size: 2rem; margin-bottom: 40px; font-weight: 800; }
 .btn-pica {
 background: #25d366 !important;
 color: white !important;
-padding: 22px 50px !important;
-border-radius: 15px !important;
+padding: 20px 45px !important;
+border-radius: 12px !important;
 font-size: 1.4rem !important;
 font-weight: 900 !important;
 text-decoration: none !important;
 display: inline-block !important;
 animation: pulse-green 2s infinite !important;
-border: none !important;
-cursor: pointer;
+}
+/* FUNDO DE CINEMA MÁGICO */
+.hero-magic {
+position: relative;
+display: flex;
+flex-wrap: wrap;
+align-items: center;
+justify-content: center;
+gap: 50px;
+padding: 100px 5%;
+background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), url('https://image.tmdb.org/t/p/original/r179UM9j9YyIAiZ0E5mO4bP1MvL.jpg');
+background-size: cover;
+background-position: center;
+border-bottom: 2px solid #111;
 }
 </style>
 
-<nav class="navbar" style="background: rgba(0,0,0,0.9); position: sticky; top: 0; z-index: 1000; padding: 15px 5%; border-bottom: 1px solid #222; display: flex; justify-content: space-between; align-items: center;">
-<div class="logo" style="font-size: 1.5rem; font-weight: 900; color: #00d2ff;">ATIVA TV 📺</div>
+<nav class="navbar" style="background: #000; padding: 20px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #222;">
+<div class="logo" style="font-size: 1.6rem; font-weight: 900; color: #00d2ff;">ATIVA TV 📺</div>
 <div class="menu">
 <a href="#" style="color: white; text-decoration: none; margin: 0 15px; font-weight: 600;">INÍCIO</a>
 <a href="#apps" style="color: white; text-decoration: none; margin: 0 15px; font-weight: 600;">APPS</a>
-<a href="https://api.whatsapp.com/send?phone=5513998074576" style="color: #25d366; text-decoration: none; margin-left: 20px; font-weight: 800;">ZAP OFICIAL</a>
+<a href="https://api.whatsapp.com/send?phone=5513998074576" style="color: #00ff88; font-weight: 800;">ZAP OFICIAL</a>
 </div>
 </nav>
 
-<header class="hero" style="padding: 80px 5%; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; text-align: left; background: linear-gradient(rgba(5,5,5,0.85), rgba(5,5,5,0.85)), url('https://image.tmdb.org/t/p/original/6EiRUJTLqh7axvAl9YvU61AsH9n.jpg'); background-size: cover; background-position: center; border-bottom: 1px solid #111;">
+<header class="hero-magic">
 
-<!-- LADO ESQUERDO: TEXTO -->
-<div style="flex: 1; min-width: 300px; padding: 20px;">
-<div style="display: flex; align-items: center; gap: 10px; margin-bottom: 20px;">
-<span style="color: #ff9900; font-weight: bold; background: rgba(255,153,0,0.1); padding: 5px 12px; border-radius: 5px;">G ★★★★★ +22.087 avaliações</span>
-</div>
-<h1 style="font-size: clamp(2.2rem, 5vw, 3.8rem); line-height: 1.1; margin: 0; font-weight: 900;">A Melhor Grade 4K <br> <span style="color: #ff9900;">por apenas 10 Pilas!</span></h1>
-<p style="font-size: 1.2rem; opacity: 0.9; margin: 30px 0; line-height: 1.5; max-width: 550px;">
-Suporte rápido com o <b>Lost</b> no comando! 🤖✨ Futebol ao vivo, as melhores séries e o cinema na sua casa sem travamentos.
+<!-- TEXTO -->
+<div style="flex: 1; min-width: 320px; max-width: 550px; text-align: left;">
+<div style="color: #ff9900; font-weight: 900; margin-bottom: 15px; background: rgba(255,153,0,0.1); padding: 5px 15px; border-radius: 5px; display: inline-block;">⭐️ +22.000 AVALIAÇÕES NO GOOGLE</div>
+<h1 style="font-size: clamp(2.5rem, 6vw, 4rem); line-height: 1; margin: 0; font-weight: 900;">Tudo Liberado <br> <span style="color: #ff9900;">Só 10 Pilas!</span></h1>
+<p style="font-size: 1.3rem; opacity: 0.9; margin: 30px 0; line-height: 1.5;">
+Suporte VIP com o <b>Lost</b> 🤖✨ Cinema, Séries e Futebol 4K direto no seu dispositivo. Ativação em 2 minutos!
 </p>
-
-<a href="https://api.whatsapp.com/send?phone=5513998074576&text=Olá!%20Vi%20a%20AtivaTV%20e%20quero%20meu%20teste%20grátis!" class="btn-pica">LIBERAR MEU TESTE AGORA 🚀</a>
-
-<div style="margin-top: 25px; font-size: 1rem; color: #00ff88; font-weight: 600;">✓ Ativação em 2 min ✓ Sem Antenas ✓ Suporte 24h</div>
+<a href="https://api.whatsapp.com/send?phone=5513998074576" class="btn-pica">LIBERAR MEU ACESSO AGORA 🚀</a>
 </div>
 
-<!-- LADO DIREITO: IMAGEM DE IMPACTO -->
-<div style="flex: 1; min-width: 300px; text-align: center; padding: 20px;">
-<img src="https://i.imgur.com/8Qp7NfP.png" alt="IPTV 4K HDR" style="width: 100%; max-width: 480px; border-radius: 20px; box-shadow: 0 20px 60px rgba(0,0,0,0.6); border: 1px solid #333;">
+<!-- IMAGEM DA INTERFACE (MUITO MAIS PROFISSIONAL) -->
+<div style="flex: 1; min-width: 320px; text-align: center;">
+<img src="https://image.tmdb.org/t/p/original/v73S7bYNAuGrXPVq9h1IUYQ6oXv.jpg" alt="Cinema Interface" style="width: 100%; max-width: 500px; border-radius: 20px; box-shadow: 0 30px 60px rgba(0,0,0,0.9); border: 3px solid #222;">
 </div>
 
 </header>
+
 
 <!-- MÓDULO 2: CORPO (CONTEÚDOS + APPS + DISPOSITIVOS) -->
 <main style="background: #050505;">
