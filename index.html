@@ -25,77 +25,68 @@ h2 { font-size: 2rem; margin-bottom: 40px; font-weight: 800; }
 .stars { color: var(--accent); font-size: 0.75rem; display: block; margin-bottom: 8px; }
 </style>
 
-<!-- MÓDULO 1: CABEÇALHO PREMIUM COM CHECKS CENTRALIZADOS -->
+<!-- MÓDULO 1: CABEÇALHO REFINADO (BOTÃO EM 1 LINHA + NEON) -->
 <style>
 @keyframes pulse-green {
 0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); transform: scale(1); }
-70% { box-shadow: 0 0 0 20px rgba(37, 211, 102, 0); transform: scale(1.05); }
+70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); transform: scale(1.03); }
 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); transform: scale(1); }
 }
 .btn-pica {
 background: #25d366 !important;
 color: white !important;
-padding: 22px 50px !important;
-border-radius: 15px !important;
-font-size: 1.4rem !important;
+padding: 18px 35px !important; /* DIMINUÍ O PADDING */
+border-radius: 12px !important;
+font-size: 1.1rem !important; /* FONTE MENOR PRA CABER EM 1 LINHA */
 font-weight: 900 !important;
 text-decoration: none !important;
-display: block !important; /* MUDADO PARA BLOCK PRA CENTRALIZAR MELHOR */
-max-width: 450px;
-text-align: center;
+display: inline-block !important;
+white-space: nowrap; /* FORÇA UMA LINHA SÓ */
 animation: pulse-green 2s infinite !important;
 cursor: pointer;
 border: none;
 }
-.hero-premium {
-display: flex;
-flex-wrap: wrap;
-align-items: center;
-justify-content: space-around;
-padding: 120px 8%;
-text-align: left;
-background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), url('https://iili.io/fmFdFhF.png');
-background-size: cover;
-background-position: center;
-border-bottom: 2px solid #111;
+/* EFEITO BRILHANTE NO 10 PILAS */
+.neon-text {
+color: #ff9900;
+text-shadow: 0 0 10px rgba(255, 153, 0, 0.8), 0 0 20px rgba(255, 153, 0, 0.4);
+font-weight: 900;
 }
 </style>
 
-<nav class="navbar" style="background: rgba(0,0,0,0.95); position: sticky; top: 0; z-index: 1000; padding: 20px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #222;">
-<div class="logo" style="font-size: 1.6rem; font-weight: 900; color: #00d2ff;">ATIVA TV 📺</div>
+<nav class="navbar" style="background: rgba(0,0,0,0.95); position: sticky; top: 0; z-index: 1000; padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #222;">
+<div class="logo" style="font-size: 1.5rem; font-weight: 900; color: #00d2ff;">ATIVA TV 📺</div>
 <div class="menu">
 <a href="#" style="color: white; text-decoration: none; margin: 0 15px; font-weight: 600;">INÍCIO</a>
 <a href="#apps" style="color: white; text-decoration: none; margin: 0 15px; font-weight: 600;">APPS</a>
-<a href="https://api.whatsapp.com/send?phone=5513998074576" style="color: #25d366; text-decoration: none; font-weight: 900; border: 1px solid #25d366; padding: 10px 20px; border-radius: 10px;">ZAP OFICIAL</a>
+<a href="https://api.whatsapp.com/send?phone=5513998074576" style="color: #25d366; text-decoration: none; font-weight: 900; border: 1px solid #25d366; padding: 8px 15px; border-radius: 8px;">ZAP OFICIAL</a>
 </div>
 </nav>
 
-<header class="hero-premium">
+<header class="hero-premium" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-around; padding: 100px 8%; text-align: left; background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), url('https://iili.io/fmFdFhF.png'); background-size: cover; background-position: center; border-bottom: 2px solid #111;">
+
 <!-- LADO ESQUERDO: TEXTO -->
 <div style="flex: 1; min-width: 320px; max-width: 550px; margin-right: 40px;">
-<div style="color: #ff9900; font-weight: 900; margin-bottom: 20px; background: rgba(255,153,0,0.1); padding: 8px 15px; border-radius: 5px; display: inline-block; font-size: 0.8rem;">⭐️ +22.000 CLIENTES SATISFEITOS</div>
-<h1 style="font-size: clamp(2rem, 5vw, 3.2rem); line-height: 1.1; margin: 0; font-weight: 900;">Toda a Grade 4K <br> <span style="color: #ff9900; font-size: 2.8rem; text-shadow: 0 0 20px rgba(255,153,0,0.3);">por apenas 10 Pilas!</span></h1>
-<p style="font-size: 1.1rem; opacity: 0.9; margin: 30px 0; line-height: 1.5;">
+<div style="color: #ff9900; font-weight: 900; margin-bottom: 20px; background: rgba(255,153,0,0.1); padding: 8px 15px; border-radius: 5px; display: inline-block; font-size: 0.75rem;">⭐️ +22.000 CLIENTES SATISFEITOS</div>
+<h1 style="font-size: clamp(1.8rem, 5vw, 3rem); line-height: 1.1; margin: 0; font-weight: 800;">Toda a Grade 4K <br> <span class="neon-text">por apenas 10 Pilas!</span></h1>
+<p style="font-size: 1rem; opacity: 0.9; margin: 25px 0; line-height: 1.5;">
 Atendimento VIP com o <b>Lost</b> no suporte! 🤖✨ O melhor do futebol, filmes e séries sem travamentos. Ativação em 2 minutos!
 </p>
 
-<!-- CONTAINER PRA CENTRALIZAR O BOTÃO E OS CHECKS -->
-<div style="display: flex; flex-direction: column; align-items: flex-start;">
 <a href="https://api.whatsapp.com/send?phone=5513998074576&text=Olá!%20Vi%20a%20AtivaTV%20e%20quero%20meu%20teste%20grátis!" class="btn-pica">LIBERAR MEU ACESSO AGORA 🚀</a>
 
-<div style="width: 100%; max-width: 450px; text-align: center; margin-top: 15px; color: #00ff88; font-weight: 600; font-size: 0.9rem; display: flex; justify-content: center; gap: 10px;">
-<span>✓ Ativação em 2 min</span>
+<div style="margin-top: 15px; color: #00ff88; font-weight: 600; font-size: 0.85rem; display: flex; gap: 10px;">
+<span>✓ Ativação em menos de 1 min</span>
 <span>✓ Sem Antenas</span>
 <span>✓ Suporte 24h</span>
-</div>
 </div>
 </div>
 
 <!-- LADO DIREITO: IMAGEM -->
 <div style="flex: 1; min-width: 320px; text-align: right; padding: 20px;">
-<img src="https://iili.io/fmF9FXs.png" alt="IPTV Interface" style="width: 100%; max-width: 460px; border-radius: 20px; box-shadow: 0 30px 60px rgba(0,0,0,0.8); border: 2px solid #333;">
+<img src="https://iili.io/fmF9FXs.png" alt="IPTV Interface" style="width: 100%; max-width: 440px; border-radius: 20px; box-shadow: 0 30px 60px rgba(0,0,0,0.8); border: 2px solid #333;">
 </div>
-</header>
+
 
 <!-- MÓDULO 2: CORPO (CONTEÚDOS + APPS + DISPOSITIVOS) -->
 <main style="background: #050505;">
