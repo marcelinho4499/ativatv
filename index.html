@@ -25,7 +25,7 @@ h2 { font-size: 2rem; margin-bottom: 40px; font-weight: 800; }
 .stars { color: var(--accent); font-size: 0.75rem; display: block; margin-bottom: 8px; }
 </style>
 
-<!-- MÓDULO 1: CABEÇALHO COM FUNDO DE CINEMA MÁGICO -->
+<!-- MÓDULO 1: CABEÇALHO PREMIUM (VERSÃO BLINDADA) -->
 <style>
 @keyframes pulse-green {
 0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); transform: scale(1); }
@@ -35,27 +35,27 @@ h2 { font-size: 2rem; margin-bottom: 40px; font-weight: 800; }
 .btn-pica {
 background: #25d366 !important;
 color: white !important;
-padding: 20px 45px !important;
+padding: 20px 40px !important;
 border-radius: 12px !important;
-font-size: 1.4rem !important;
+font-size: 1.3rem !important;
 font-weight: 900 !important;
 text-decoration: none !important;
 display: inline-block !important;
 animation: pulse-green 2s infinite !important;
+border: none !important;
 }
-/* FUNDO DE CINEMA MÁGICO */
-.hero-magic {
-position: relative;
+.hero-container {
 display: flex;
 flex-wrap: wrap;
 align-items: center;
 justify-content: center;
-gap: 50px;
+gap: 40px;
 padding: 100px 5%;
-background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), url('https://image.tmdb.org/t/p/original/r179UM9j9YyIAiZ0E5mO4bP1MvL.jpg');
+background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://image.tmdb.org/t/p/original/6EiRUJTLqh7axvAl9YvU61AsH9n.jpg');
 background-size: cover;
 background-position: center;
-border-bottom: 2px solid #111;
+min-height: 600px;
+text-align: left;
 }
 </style>
 
@@ -64,29 +64,33 @@ border-bottom: 2px solid #111;
 <div class="menu">
 <a href="#" style="color: white; text-decoration: none; margin: 0 15px; font-weight: 600;">INÍCIO</a>
 <a href="#apps" style="color: white; text-decoration: none; margin: 0 15px; font-weight: 600;">APPS</a>
-<a href="https://api.whatsapp.com/send?phone=5513998074576" style="color: #00ff88; font-weight: 800;">ZAP OFICIAL</a>
+<a href="https://api.whatsapp.com/send?phone=5513998074576" style="color: #00ff88; text-decoration: none; font-weight: 800; border: 1px solid #00ff88; padding: 8px 15px; border-radius: 8px;">ZAP OFICIAL</a>
 </div>
 </nav>
 
-<header class="hero-magic">
+<header class="hero-container">
 
 <!-- TEXTO -->
-<div style="flex: 1; min-width: 320px; max-width: 550px; text-align: left;">
-<div style="color: #ff9900; font-weight: 900; margin-bottom: 15px; background: rgba(255,153,0,0.1); padding: 5px 15px; border-radius: 5px; display: inline-block;">⭐️ +22.000 AVALIAÇÕES NO GOOGLE</div>
-<h1 style="font-size: clamp(2.5rem, 6vw, 4rem); line-height: 1; margin: 0; font-weight: 900;">Tudo Liberado <br> <span style="color: #ff9900;">Só 10 Pilas!</span></h1>
-<p style="font-size: 1.3rem; opacity: 0.9; margin: 30px 0; line-height: 1.5;">
-Suporte VIP com o <b>Lost</b> 🤖✨ Cinema, Séries e Futebol 4K direto no seu dispositivo. Ativação em 2 minutos!
+<div style="flex: 1; min-width: 320px; max-width: 600px;">
+<div style="color: #ff9900; font-weight: 800; margin-bottom: 15px; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px;">⭐️ +22.000 Clientes Satisfeitos</div>
+<h1 style="font-size: clamp(2.5rem, 6vw, 4rem); line-height: 1; margin: 0; font-weight: 900;">A Melhor Grade 4K <br> <span style="color: #ff9900;">por apenas 10 Pilas!</span></h1>
+<p style="font-size: 1.2rem; opacity: 0.9; margin: 30px 0; line-height: 1.6;">
+Suporte rápido com o <b>Lost</b> no comando! 🤖✨ Futebol, séries e o cinema na sua casa sem antenas e sem travamentos.
 </p>
-<a href="https://api.whatsapp.com/send?phone=5513998074576" class="btn-pica">LIBERAR MEU ACESSO AGORA 🚀</a>
+<a href="https://api.whatsapp.com/send?phone=5513998074576" class="btn-pica">LIBERAR MEU TESTE AGORA 🚀</a>
+<div style="margin-top: 25px; color: #00ff88; font-weight: 600; display: flex; gap: 15px; flex-wrap: wrap;">
+<span>✓ Ativação em 2 min</span>
+<span>✓ Sem Travamentos</span>
+<span>✓ Sinal 4K</span>
+</div>
 </div>
 
-<!-- IMAGEM DA INTERFACE (MUITO MAIS PROFISSIONAL) -->
+<!-- IMAGEM (LINK SEGURO) -->
 <div style="flex: 1; min-width: 320px; text-align: center;">
-<img src="https://image.tmdb.org/t/p/original/v73S7bYNAuGrXPVq9h1IUYQ6oXv.jpg" alt="Cinema Interface" style="width: 100%; max-width: 500px; border-radius: 20px; box-shadow: 0 30px 60px rgba(0,0,0,0.9); border: 3px solid #222;">
+<img src="https://images.tcdn.com.br/img/img_prod/1169871/smart_tv_box_4k_android_9_0_tx6_tanix_4gb_ram_32gb_rom_31_1_34e19574c8b02447990663473183577d.jpg" alt="TV BOX 4K" style="width: 100%; max-width: 450px; border-radius: 30px; box-shadow: 0 30px 60px rgba(0,0,0,0.8); border: 2px solid #333;">
 </div>
 
 </header>
-
 
 <!-- MÓDULO 2: CORPO (CONTEÚDOS + APPS + DISPOSITIVOS) -->
 <main style="background: #050505;">
