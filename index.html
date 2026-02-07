@@ -25,7 +25,7 @@ h2 { font-size: 2rem; margin-bottom: 40px; font-weight: 800; }
 .stars { color: var(--accent); font-size: 0.75rem; display: block; margin-bottom: 8px; }
 </style>
 
-<!-- MÓDULO 1: CABEÇALHO PREMIUM FINAL (IMAGENS CORRIGIDAS) -->
+<!-- MÓDULO 1: CABEÇALHO PREMIUM AJUSTADO (CIRÚRGICO) -->
 <style>
 @keyframes pulse-green {
 0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); transform: scale(1); }
@@ -49,10 +49,9 @@ border: none;
 display: flex;
 flex-wrap: wrap;
 align-items: center;
-justify-content: space-between;
-padding: 100px 8%;
+justify-content: space-around; /* AFASTA OS ELEMENTOS AUTOMATICAMENTE */
+padding: 120px 8%;
 text-align: left;
-/* FUNDO DO CONTROLE QUE VOCÊ MANDOU */
 background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), url('https://iili.io/fmFdFhF.png');
 background-size: cover;
 background-position: center;
@@ -71,22 +70,20 @@ border-bottom: 2px solid #111;
 
 <header class="hero-premium">
 <!-- LADO ESQUERDO: TEXTO -->
-<div style="flex: 1; min-width: 320px; max-width: 600px;">
-<div style="color: #ff9900; font-weight: 900; margin-bottom: 20px; background: rgba(255,153,0,0.1); padding: 8px 15px; border-radius: 5px; display: inline-block;">⭐️ +22.000 CLIENTES NA ILHA</div>
-<h1 style="font-size: clamp(2.2rem, 6vw, 3.8rem); line-height: 1.1; margin: 0; font-weight: 900;">Toda a Grade 4K <br> <span style="color: #ff9900;">por apenas 10 Pilas!</span></h1>
-<p style="font-size: 1.3rem; opacity: 0.9; margin: 30px 0; line-height: 1.5;">
-Atendimento humanizado com o <b>Lost</b> no suporte! 🤖✨ O melhor do futebol, filmes e séries sem travamentos. Ativação em 2 minutos!
+<div style="flex: 1; min-width: 320px; max-width: 550px; margin-right: 40px;"> <!-- MARGIN ADICIONADA AQUI -->
+<div style="color: #ff9900; font-weight: 900; margin-bottom: 20px; background: rgba(255,153,0,0.1); padding: 8px 15px; border-radius: 5px; display: inline-block; font-size: 0.8rem;">⭐️ +22.000 CLIENTES SATISFEITOS</div>
+<h1 style="font-size: clamp(2rem, 5vw, 3.2rem); line-height: 1.1; margin: 0; font-weight: 900;">Toda a Grade 4K <br> <span style="color: #ff9900; font-size: 2.8rem; text-shadow: 0 0 20px rgba(255,153,0,0.3);">por apenas 10 Pilas!</span></h1>
+<p style="font-size: 1.1rem; opacity: 0.9; margin: 30px 0; line-height: 1.5;">
+Atendimento VIP com o <b>Lost</b> no suporte! 🤖✨ O melhor do futebol, filmes e séries sem travamentos. Ativação em 2 minutos!
 </p>
 <a href="https://api.whatsapp.com/send?phone=5513998074576&text=Olá!%20Vi%20a%20AtivaTV%20e%20quero%20meu%20teste%20grátis!" class="btn-pica">LIBERAR MEU ACESSO AGORA 🚀</a>
 </div>
 
-<!-- LADO DIREITO: IMAGEM QUE VOCÊ MANDOU -->
-<div style="flex: 1; min-width: 320px; text-align: center; padding: 20px;">
-<img src="https://iili.io/fmF9FXs.png" alt="IPTV Interface" style="width: 100%; max-width: 500px; border-radius: 20px; box-shadow: 0 30px 60px rgba(0,0,0,0.8); border: 3px solid #222;">
+<!-- LADO DIREITO: IMAGEM MAIS PRA DIREITA -->
+<div style="flex: 1; min-width: 320px; text-align: right; padding: 20px;">
+<img src="https://iili.io/fmF9FXs.png" alt="IPTV Interface" style="width: 100%; max-width: 460px; border-radius: 20px; box-shadow: 0 30px 60px rgba(0,0,0,0.8); border: 2px solid #333;">
 </div>
 </header>
-
-
 
 <!-- MÓDULO 2: CORPO (CONTEÚDOS + APPS + DISPOSITIVOS) -->
 <main style="background: #050505;">
