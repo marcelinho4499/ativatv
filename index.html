@@ -25,7 +25,7 @@ h2 { font-size: 2rem; margin-bottom: 40px; font-weight: 800; }
 .stars { color: var(--accent); font-size: 0.75rem; display: block; margin-bottom: 8px; }
 </style>
 
-<!-- MÓDULO 1: CABEÇALHO PREMIUM FINALIZADO (COM CHECKS) -->
+<!-- MÓDULO 1: CABEÇALHO PREMIUM COM CHECKS CENTRALIZADOS -->
 <style>
 @keyframes pulse-green {
 0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); transform: scale(1); }
@@ -40,7 +40,9 @@ border-radius: 15px !important;
 font-size: 1.4rem !important;
 font-weight: 900 !important;
 text-decoration: none !important;
-display: inline-block !important;
+display: block !important; /* MUDADO PARA BLOCK PRA CENTRALIZAR MELHOR */
+max-width: 450px;
+text-align: center;
 animation: pulse-green 2s infinite !important;
 cursor: pointer;
 border: none;
@@ -76,13 +78,16 @@ border-bottom: 2px solid #111;
 <p style="font-size: 1.1rem; opacity: 0.9; margin: 30px 0; line-height: 1.5;">
 Atendimento VIP com o <b>Lost</b> no suporte! 🤖✨ O melhor do futebol, filmes e séries sem travamentos. Ativação em 2 minutos!
 </p>
+
+<!-- CONTAINER PRA CENTRALIZAR O BOTÃO E OS CHECKS -->
+<div style="display: flex; flex-direction: column; align-items: flex-start;">
 <a href="https://api.whatsapp.com/send?phone=5513998074576&text=Olá!%20Vi%20a%20AtivaTV%20e%20quero%20meu%20teste%20grátis!" class="btn-pica">LIBERAR MEU ACESSO AGORA 🚀</a>
 
-<!-- CHECKS VERDES ADICIONADOS AQUI -->
-<div style="margin-top: 25px; color: #00ff88; font-weight: 600; font-size: 1rem; display: flex; gap: 15px; flex-wrap: wrap;">
+<div style="width: 100%; max-width: 450px; text-align: center; margin-top: 15px; color: #00ff88; font-weight: 600; font-size: 0.9rem; display: flex; justify-content: center; gap: 10px;">
 <span>✓ Ativação em 2 min</span>
 <span>✓ Sem Antenas</span>
 <span>✓ Suporte 24h</span>
+</div>
 </div>
 </div>
 
