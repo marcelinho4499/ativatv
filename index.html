@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AtivaTV - Oficial - Grade 4K Imediata</title>
 <style>
-:root { --accent: #ffcc00; --secondary: #00d2ff; --bg: #222529; --card: #343a40; }
+:root { --accent: #ffcc00; --secondary: #00d2ff; --bg: #0a0a0b; --card: #1c1c1e; }
 * { box-sizing: border-box; scroll-behavior: smooth; }
 body { font-family: 'Inter', Arial, sans-serif; background-color: var(--bg); color: #fff; margin: 0; padding: 0; text-align: center; }
 
@@ -17,7 +17,7 @@ body { font-family: 'Inter', Arial, sans-serif; background-color: var(--bg); col
 .cta-btn { background: #25d366; color: white; padding: 20px 45px; font-size: 1.4rem; font-weight: 800; text-decoration: none; border-radius: 50px; display: inline-block; margin-top: 25px; }
 
 .section { padding: 60px 5%; }
-h2 { font-size: 2rem; margin-bottom: 40px; font-weight: 800; }
+h2 { font-size: 2rem; margin-bottom: 40px; font-weight: 800; display: flex; align-items: center; justify-content: center; gap: 10px; }
 
 /* VÍDEOS (CONTEÚDOS) - FIXO */
 .video-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin-bottom: 20px; }
@@ -27,11 +27,11 @@ h2 { font-size: 2rem; margin-bottom: 40px; font-weight: 800; }
 
 /* GRADE ESTILO PRINT (APPS E DISPOSITIVOS) */
 .grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
-.card { background: var(--card); padding: 25px 15px; border-radius: 25px; width: 160px; border: 1px solid #444; transition: 0.3s; }
-.card:hover { transform: translateY(-5px); border-color: var(--secondary); }
-.card img { width: 80px; height: 80px; border-radius: 15px; margin-bottom: 12px; background: #000; padding: 5px; object-fit: contain; }
+.card { background: #2c2c2e; padding: 25px 15px; border-radius: 25px; width: 160px; border: 1px solid #444; transition: 0.3s; }
+.card:hover { transform: translateY(-5px); border-color: var(--secondary); background: #3a3a3c; }
+.card img { width: 85px; height: 85px; border-radius: 18px; margin-bottom: 12px; background: #000; padding: 5px; object-fit: contain; }
 .stars { color: var(--accent); font-size: 0.75rem; display: block; margin-bottom: 8px; }
-.card h4 { margin: 0; font-size: 1rem; color: #eee; text-transform: capitalize; }
+.card h4 { margin: 0; font-size: 1rem; color: #fff; font-weight: 600; }
 
 footer { padding: 40px; border-top: 1px solid #333; opacity: 0.4; font-size: 0.8rem; }
 </style>
@@ -50,6 +50,7 @@ footer { padding: 40px; border-top: 1px solid #333; opacity: 0.4; font-size: 0.8
 <div class="video-grid">
 <div class="video-card"><video autoplay muted loop playsinline><source src="https://funplay.app.br/_assets/video/d152b85ab0b46c88b7ebb7fb67b7ba2c.mp4" type="video/mp4"></video></div>
 <div class="video-card"><video autoplay muted loop playsinline><source src="https://funplay.app.br/_assets/video/02e2e98834eb0c631861092a855e8f31.mp4" type="video/mp4"></video></div>
+
 <div class="video-card"><video autoplay muted loop playsinline><source src="https://funplay.app.br/_assets/video/f5eb27c96cf400a30d65b3da8cf607d1.mp4" type="video/mp4"></video></div>
 <div class="video-card"><video autoplay muted loop playsinline><source src="https://funplay.app.br/_assets/video/b54cf109673d12ddf6d4092d46fc46a0.mp4" type="video/mp4"></video></div>
 <div class="video-card"><video autoplay muted loop playsinline><source src="https://funplay.app.br/_assets/video/82a02e3b67ac9e75898e193e5db78a77.mp4" type="video/mp4"></video></div>
@@ -60,16 +61,17 @@ Acesso total à TV aberta e fechada. Esportes, notícias e entretenimento ao viv
 </div>
 </section>
 
-<!-- MEIO DO SITE: APLICATIVOS -->
-<section class="section" style="background: #1a1d21; border-top: 1px solid #333;">
+<!-- MEIO DO SITE: APLICATIVOS (CORRIGIDO) -->
+<section class="section">
 <h2>Nossos Aplicativos 📲</h2>
 <div class="grid">
-<div class="card"><img src="https://play-lh.googleusercontent.com/sZhx9HbFyQ7UIS5JYy2fYsJJnaOBD3-Y0jc9hoe9lQ6GX1kB4K2K9wdYHobKvWkSqwA"><span class="stars">★★★★★</span><h4>Blessed player</h4></div>
-<div class="card"><img src="https://m.media-amazon.com/images/I/81VIPvLxCiL.png"><span class="stars">★★★★★</span><h4>Assist plus</h4></div>
-<div class="card"><img src="https://play-lh.googleusercontent.com/mpiK0UdwToVpAqCI5nDtLsppEq3u4Utc5gJhDthqKYImu9jxZ7uzRP032845EIb_vg"><span class="stars">★★★★★</span><h4>Fun play</h4></div>
-<div class="card"><img src="https://play-lh.googleusercontent.com/mpiK0UdwToVpAqCI5nDtLsppEq3u4Utc5gJhDthqKYImu9jxZ7uzRP032845EIb_vg"><span class="stars">★★★★★</span><h4>Lazer play</h4></div>
+<div class="card"><img src="https://play-lh.googleusercontent.com/sZhx9HbFyQ7UIS5JYy2fYsJJnaOBD3-Y0jc9hoe9lQ6GX1kB4K2K9wdYHobKvWkSqwA"><span class="stars">★★★★★</span><h4>Blessed Player</h4></div>
+<div class="card"><img src="https://m.media-amazon.com/images/I/81VIPvLxCiL.png"><span class="stars">★★★★★</span><h4>Assist Plus</h4></div>
+<!-- FUN PLAY COM ICONE CERTO AGORA -->
+<div class="card"><img src="https://play-lh.googleusercontent.com/mGSPViod7S3Vyh0qRECCrRc-2ZJlNyN7sqlnUQs2dqxMm3UkTORReDump3egIoZ1r59o42heSFlsMSqBf5K=w240-h480-rw"><span class="stars">★★★★★</span><h4>Fun Play</h4></div>
+<div class="card"><img src="https://play-lh.googleusercontent.com/mpiK0UdwToVpAqCI5nDtLsppEq3u4Utc5gJhDthqKYImu9jxZ7uzRP032845EIb_vg"><span class="stars">★★★★★</span><h4>Lazer Play</h4></div>
 <div class="card"><img src="https://m.media-amazon.com/images/I/61QjUxDNMRL.png"><span class="stars">★★★★★</span><h4>Playsim</h4></div>
-<div class="card"><img src="https://img.utdstc.com/icon/5d7/835/5d7835a806b1cdc5d7427879634e5417a12f8c94e6dab633dcd7ff81be9115a1:200"><span class="stars">★★★★★</span><h4>Smarters pro</h4></div>
+<div class="card"><img src="https://img.utdstc.com/icon/5d7/835/5d7835a806b1cdc5d7427879634e5417a12f8c94e6dab633dcd7ff81be9115a1:200"><span class="stars">★★★★★</span><h4>Smarters Pro</h4></div>
 </div>
 </section>
 
@@ -77,12 +79,12 @@ Acesso total à TV aberta e fechada. Esportes, notícias e entretenimento ao viv
 <section class="section">
 <h2>Dispositivos Compatíveis 📺</h2>
 <div class="grid">
-<div class="card" style="width: 140px;"><h4>SAMSUNG</h4><span class="stars">★★★★★</span></div>
-<div class="card" style="width: 140px;"><h4>LG</h4><span class="stars">★★★★★</span></div>
-<div class="card" style="width: 140px;"><h4>FIRE TV</h4><span class="stars">★★★★★</span></div>
-<div class="card" style="width: 140px;"><h4>ANDROID</h4><span class="stars">★★★★★</span></div>
-<div class="card" style="width: 140px;"><h4>WINDOWS</h4><span class="stars">★★★★★</span></div>
-<div class="card" style="width: 140px;"><h4>ROKU</h4><span class="stars">★★★★★</span></div>
+<div class="card" style="width: 150px;"><h4>SAMSUNG</h4><span class="stars">★★★★★</span></div>
+<div class="card" style="width: 150px;"><h4>LG</h4><span class="stars">★★★★★</span></div>
+<div class="card" style="width: 150px;"><h4>FIRE TV</h4><span class="stars">★★★★★</span></div>
+<div class="card" style="width: 150px;"><h4>ANDROID</h4><span class="stars">★★★★★</span></div>
+<div class="card" style="width: 150px;"><h4>WINDOWS</h4><span class="stars">★★★★★</span></div>
+<div class="card" style="width: 150px;"><h4>ROKU</h4><span class="stars">★★★★★</span></div>
 </div>
 </section>
 
