@@ -5,8 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MaxTV - Filmes, Séries e TV ao Vivo | Teste Grátis 4 Horas</title>
     <meta name="description" content="Assista a mais de 15.000 canais, filmes e séries em Full HD e 4K. Teste grátis de 4 horas. Planos a partir de R$20.">
+    <meta name="theme-color" content="#05060A">
+    <meta property="og:title" content="MaxTV - Filmes, Séries e TV ao Vivo | Teste Grátis 4 Horas">
+    <meta property="og:description" content="Assista a mais de 15.000 canais, filmes e séries em Full HD e 4K. Teste grátis de 4 horas. Planos a partir de R$20.">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="pt_BR">
+    <meta name="twitter:card" content="summary_large_image">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         /* ==========================================================================
@@ -24,14 +32,15 @@
            10. Categorias
            11. Diferenciais
            12. Dispositivos
-           13. Apps parceiros
-           14. Preços
-           15. Depoimentos
-           16. FAQ
-           17. Contato
-           18. Footer
-           19. WhatsApp flutuante
-           20. Responsivo
+           13. Contagem regressiva
+           14. Apps parceiros
+           15. Preços
+           16. Depoimentos
+           17. FAQ
+           18. Contato
+           19. Footer
+           20. WhatsApp flutuante
+           21. Responsivo
            ========================================================================== */
 
         /* --------------------------------------------------------------------------
@@ -173,6 +182,9 @@
             justify-content: space-between;
         }
         .navbar__logo {
+            display: inline-flex;
+            align-items: center;
+            min-height: 44px;
             font-size: 1.6rem;
             font-weight: 900;
             background: var(--gradient-main);
@@ -189,6 +201,9 @@
             gap: 32px;
         }
         .navbar__links a {
+            display: inline-flex;
+            align-items: center;
+            min-height: 44px;
             font-size: 0.9rem;
             font-weight: 500;
             color: var(--text-secondary);
@@ -392,7 +407,7 @@
             border-radius: 50px;
             font-size: 0.85rem;
             font-weight: 600;
-            color: var(--accent-purple);
+            color: #C9BEFF;
             margin-bottom: 24px;
             animation: pulse-badge 2s ease-in-out infinite;
         }
@@ -562,9 +577,18 @@
             pointer-events: none;
             z-index: 1;
         }
+        .video-container {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            overflow: hidden;
+            background: #05060a;
+        }
         .video-showcase video {
             width: 100%;
+            height: 100%;
             display: block;
+            object-fit: cover;
             background: var(--bg-elevated);
         }
         .video-showcase__badge {
@@ -577,43 +601,89 @@
             border-radius: 50px;
             font-size: 0.8rem;
             font-weight: 700;
-            z-index: 2;
+            z-index: 4;
             display: flex;
             align-items: center;
             gap: 8px;
+            pointer-events: none;
         }
-        .video-showcase__play {
+        .video-mask {
             position: absolute;
             inset: 0;
+            z-index: 3;
             display: flex;
             align-items: center;
             justify-content: center;
-            z-index: 2;
-            cursor: pointer;
-            transition: var(--transition);
+            background: rgba(5, 6, 10, 0.6);
+            -webkit-backdrop-filter: blur(8px);
+            backdrop-filter: blur(8px);
+            opacity: 1;
+            visibility: visible;
+            transition: opacity 0.45s ease, visibility 0s linear 0s;
         }
-        .video-showcase__play-icon {
-            width: 80px;
-            height: 80px;
-            background: rgba(124, 92, 255, 0.9);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: var(--transition);
-        }
-        .video-showcase__play-icon i {
-            font-size: 2rem;
-            color: white;
-            margin-left: 5px;
-        }
-        .video-showcase__play:hover .video-showcase__play-icon {
-            transform: scale(1.1);
-            background: var(--accent-purple);
-        }
-        .video-showcase__play.hidden {
+        .video-mask.is-hidden {
             opacity: 0;
+            visibility: hidden;
             pointer-events: none;
+            transition: opacity 0.45s ease, visibility 0s linear 0.45s;
+        }
+        .video-mask__button {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+            padding: 18px 30px;
+            border: 0;
+            border-radius: 24px;
+            background: transparent;
+            color: #fff;
+            font: inherit;
+            cursor: pointer;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .video-mask__icon {
+            width: clamp(76px, 10vw, 100px);
+            aspect-ratio: 1;
+            display: grid;
+            place-items: center;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #7c5cff 0%, #22d3ee 100%);
+            box-shadow:
+                0 0 0 1px rgba(255, 255, 255, 0.25),
+                0 14px 35px rgba(5, 6, 10, 0.45),
+                0 0 34px rgba(124, 92, 255, 0.65),
+                0 0 64px rgba(34, 211, 238, 0.35);
+            transition: transform 0.3s var(--ease-out), box-shadow 0.3s var(--ease-out);
+        }
+        .video-mask__icon i {
+            font-size: clamp(1.45rem, 3vw, 2rem);
+            color: #fff;
+            margin-left: 4px;
+        }
+        .video-mask__text {
+            font-size: clamp(0.82rem, 2.4vw, 0.98rem);
+            font-weight: 600;
+            letter-spacing: 0.03em;
+            text-shadow: 0 2px 12px rgba(5, 6, 10, 0.85);
+        }
+        .video-mask__button:hover .video-mask__icon {
+            transform: scale(1.07);
+            box-shadow:
+                0 0 0 1px rgba(255, 255, 255, 0.35),
+                0 16px 40px rgba(5, 6, 10, 0.5),
+                0 0 44px rgba(124, 92, 255, 0.8),
+                0 0 84px rgba(34, 211, 238, 0.45);
+        }
+        .video-mask__button:active .video-mask__icon {
+            transform: scale(0.98);
+        }
+        .video-mask__button:focus-visible {
+            outline: 3px solid #fff;
+            outline-offset: 6px;
+            box-shadow: 0 0 0 9px rgba(34, 211, 238, 0.28);
+        }
+        @media (max-width: 600px) {
+            .video-showcase__badge { display: none; }
         }
 
         /* ==========================================
@@ -798,14 +868,14 @@
         .release-card__meta {
             display: flex;
             gap: 8px;
-            font-size: 0.7rem;
+            font-size: clamp(0.75rem, 1.8vw, 0.8rem);
             color: var(--text-muted);
         }
         .release-card__meta .quality {
             padding: 2px 6px;
             border-radius: 4px;
             background: rgba(124, 92, 255, 0.3);
-            color: var(--accent-purple);
+            color: #C9BEFF;
             font-weight: 700;
         }
         .release-card__badge-new {
@@ -815,7 +885,7 @@
             padding: 4px 10px;
             background: var(--accent-red);
             color: white;
-            font-size: 0.65rem;
+            font-size: clamp(0.75rem, 1.6vw, 0.8rem);
             font-weight: 800;
             border-radius: 6px;
             text-transform: uppercase;
@@ -831,7 +901,7 @@
             padding: 4px 8px;
             background: rgba(0,0,0,0.7);
             border-radius: 6px;
-            font-size: 0.7rem;
+            font-size: clamp(0.75rem, 1.8vw, 0.8rem);
             font-weight: 700;
             color: var(--accent-orange);
         }
@@ -1069,7 +1139,7 @@
             background: rgba(37, 211, 102, 0.05);
         }
         .device-card:hover i,
-        .device-card:hover h4 { color: #25d366; }
+        .device-card:hover h3 { color: #25d366; }
         .device-card i {
             font-size: 3rem;
             margin-bottom: 15px;
@@ -1077,7 +1147,7 @@
             display: block;
             transition: 0.3s;
         }
-        .device-card h4 {
+        .device-card h3 {
             font-size: 0.85rem;
             letter-spacing: 1px;
             transition: 0.3s;
@@ -1085,26 +1155,103 @@
         }
 
         /* ==========================================
-           13. APPS PARCEIROS
+           13. CONTAGEM REGRESSIVA
+           ========================================== */
+        .countdown {
+            padding: 60px 0;
+            background: var(--bg-elevated);
+        }
+        .countdown__card {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 40px 24px;
+            text-align: center;
+            background-color: var(--surface-1);
+            background-image: linear-gradient(160deg, rgba(124, 92, 255, 0.12), transparent 55%);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+        }
+        .countdown__title {
+            font-size: clamp(1.5rem, 4vw, 2.2rem);
+            margin-bottom: 10px;
+        }
+        .countdown__desc {
+            color: var(--text-soft);
+            font-size: clamp(0.85rem, 2vw, 1rem);
+            margin-bottom: 24px;
+        }
+        .countdown__grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            max-width: 420px;
+            margin-inline: auto;
+            gap: 12px;
+            font-variant-numeric: tabular-nums;
+        }
+        .countdown__box {
+            padding: 14px 8px;
+            background: var(--surface-2);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+        }
+        .countdown__value {
+            display: block;
+            font-size: clamp(2rem, 6vw, 2.75rem);
+            font-weight: 800;
+            line-height: 1;
+            color: var(--text-primary);
+        }
+        .countdown__label {
+            display: block;
+            margin-top: 6px;
+            font-size: clamp(0.75rem, 1.8vw, 0.8rem);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+        }
+        .countdown__cta { margin-top: 24px; }
+
+        /* ==========================================
+           14. APPS PARCEIROS
             ========================================== */
         .apps {
             padding: 40px 5%;
             background: linear-gradient(180deg, transparent, rgba(124, 92, 255,0.03), transparent);
         }
-        .apps__grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
+        .apps__marquee {
+            position: relative;
+            overflow: hidden;
+            padding: 14px 0;
+            -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 5%, #000 95%, transparent 100%);
+            mask-image: linear-gradient(90deg, transparent 0, #000 5%, #000 95%, transparent 100%);
+        }
+        .apps__track {
+            display: flex;
+            width: max-content;
+            animation: apps-marquee 45s linear infinite;
+            will-change: transform;
+        }
+        .apps__group {
+            display: flex;
             gap: 20px;
-            max-width: 900px;
-            margin: 0 auto;
+            padding-right: 20px;
+        }
+        .apps__marquee:hover .apps__track,
+        .apps__marquee:focus-within .apps__track {
+            animation-play-state: paused;
+        }
+        @keyframes apps-marquee {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
         }
         .app-card {
             display: block;
             background-color: var(--surface-1);
             background-image: linear-gradient(160deg, rgba(255, 255, 255, 0.035), transparent 55%);
-            padding: 25px 15px;
+            padding: 0 0 20px;
             border-radius: var(--radius-md);
             width: 175px;
+            flex: 0 0 175px;
             border: 1px solid var(--border-subtle);
             transition: transform var(--ease-out), border-color var(--ease-out), box-shadow var(--ease-out);
             position: relative;
@@ -1112,6 +1259,7 @@
             cursor: pointer;
             text-decoration: none;
             color: inherit;
+            overflow: hidden;
         }
         .app-card:hover {
             transform: translateY(-4px);
@@ -1121,7 +1269,7 @@
         }
         .app-card__badge {
             color: #000;
-            font-size: 0.55rem;
+            font-size: clamp(0.75rem, 1.6vw, 0.8rem);
             font-weight: 900;
             padding: 4px 8px;
             border-radius: 20px;
@@ -1135,22 +1283,21 @@
             z-index: 15;
         }
         .app-card__icon {
-            width: 85px;
-            height: 85px;
-            border-radius: 18px;
-            margin-bottom: 12px;
+            width: 100%;
+            height: 120px;
+            border-radius: calc(var(--radius-md) - 1px) calc(var(--radius-md) - 1px) 0 0;
+            margin: 0;
             background: #000;
-            padding: 5px;
-            object-fit: contain;
-            transition: 0.3s;
+            padding: 0;
+            object-fit: cover;
+            object-position: center;
+            transition: transform 0.3s var(--ease-out);
             display: block;
-            margin-left: auto;
-            margin-right: auto;
         }
         .app-card__stars {
             color: #ffcc00;
             font-size: 0.75rem;
-            margin-bottom: 8px;
+            margin: 12px 10px 6px;
             display: block;
         }
         .app-card__name {
@@ -1158,18 +1305,13 @@
             font-weight: 700;
             transition: 0.3s;
             margin: 0;
+            padding: 0 10px;
         }
-        .card-blessed:hover { border-color: var(--success); box-shadow: 0 15px 35px rgba(16, 185, 129, 0.5); }
-        .card-blessed:hover .app-card__name { color: var(--success); }
-
         .card-assist:hover { border-color: #a333c8; box-shadow: 0 15px 35px rgba(163, 51, 200, 0.5); }
         .card-assist:hover .app-card__name { color: #a333c8; }
 
         .card-fun:hover { border-color: #ec4899; box-shadow: 0 15px 35px rgba(236, 72, 153, 0.5); }
         .card-fun:hover .app-card__name { color: #ec4899; }
-
-        .card-lazer:hover { border-color: var(--accent); box-shadow: 0 15px 35px rgba(124, 92, 255, 0.5); }
-        .card-lazer:hover .app-card__name { color: var(--accent); }
 
         .card-playsim:hover { border-color: var(--accent-cyan); box-shadow: 0 15px 35px rgba(34, 211, 238, 0.5); }
         .card-playsim:hover .app-card__name { color: var(--accent-cyan); }
@@ -1183,11 +1325,32 @@
         .card-club:hover { border-color: #d81b60; box-shadow: 0 15px 35px rgba(216, 27, 96, 0.5); }
         .card-club:hover .app-card__name { color: #d81b60; }
 
-        .app-card--desktop { display: block; }
+        .card-zuxo:hover { border-color: var(--warning); box-shadow: 0 15px 35px rgba(251, 191, 36, 0.5); }
+        .card-zuxo:hover .app-card__name { color: var(--warning); }
+
+        .card-ss:hover { border-color: var(--accent-cyan); box-shadow: 0 15px 35px rgba(34, 211, 238, 0.5); }
+        .card-ss:hover .app-card__name { color: var(--accent-cyan); }
+
+        .card-lotus:hover { border-color: var(--accent-green); box-shadow: 0 15px 35px rgba(16, 185, 129, 0.5); }
+        .card-lotus:hover .app-card__name { color: var(--accent-green); }
+
+        .card-classe:hover { border-color: var(--accent); box-shadow: 0 15px 35px rgba(124, 92, 255, 0.5); }
+        .card-classe:hover .app-card__name { color: var(--accent); }
+
+        .card-lazer:hover { border-color: var(--accent); box-shadow: 0 15px 35px rgba(124, 92, 255, 0.5); }
+        .card-lazer:hover .app-card__name { color: var(--accent); }
 
         /* ==========================================
-           14. PREÇOS
+           15. PREÇOS
            ========================================== */
+        @property --beam-angle {
+            syntax: "<angle>";
+            inherits: false;
+            initial-value: 0deg;
+        }
+        @keyframes border-beam {
+            to { --beam-angle: 360deg; }
+        }
         .pricing {
             padding: 100px 0;
         }
@@ -1222,15 +1385,26 @@
             box-shadow: 0 18px 45px rgba(0, 0, 0, 0.45), 0 0 40px rgba(124, 92, 255, 0.28);
         }
         .pricing-card--annual {
-            border-color: rgba(251, 191, 36, 0.45);
-            background-image: linear-gradient(160deg, rgba(251, 191, 36, 0.10), rgba(14, 17, 25, 0.92) 60%);
+            border-color: rgba(251, 191, 36, 0.6);
+            background-color: var(--surface-1);
+            background-image:
+                linear-gradient(180deg, rgba(251, 191, 36, 0.08) 0%, transparent 100%),
+                linear-gradient(160deg, rgba(251, 191, 36, 0.12), rgba(14, 17, 25, 0.92) 62%);
+            box-shadow:
+                inset 0 1px 0 rgba(251, 191, 36, 0.18),
+                0 0 0 1px rgba(251, 191, 36, 0.10),
+                0 0 42px rgba(251, 191, 36, 0.22),
+                0 0 90px rgba(251, 191, 36, 0.12);
         }
         .pricing-card--annual:hover {
-            border-color: rgba(251, 191, 36, 0.7);
-            box-shadow: 0 18px 45px rgba(0, 0, 0, 0.45), 0 0 28px rgba(251, 191, 36, 0.16);
-        }
-        .pricing-card--annual .pricing-card__icon {
-            color: var(--warning);
+            border-color: rgba(251, 191, 36, 0.9);
+            background-image:
+                linear-gradient(180deg, rgba(251, 191, 36, 0.12) 0%, transparent 100%),
+                linear-gradient(160deg, rgba(251, 191, 36, 0.18), rgba(14, 17, 25, 0.9) 62%);
+            box-shadow:
+                inset 0 1px 0 rgba(251, 191, 36, 0.28),
+                0 18px 45px rgba(0, 0, 0, 0.45),
+                0 0 60px rgba(251, 191, 36, 0.36);
         }
         .pricing-card--annual .pricing-card__value {
             background: var(--gradient-gold);
@@ -1243,7 +1417,7 @@
             padding: 5px 14px;
             background: var(--gradient-brand);
             color: white;
-            font-size: 0.7rem;
+            font-size: clamp(0.75rem, 1.8vw, 0.8rem);
             font-weight: 700;
             border-radius: 50px;
             margin-bottom: 12px;
@@ -1256,9 +1430,6 @@
             font-size: 2.2rem;
             color: var(--accent-purple);
             margin-bottom: 8px;
-        }
-        .pricing-card.featured .pricing-card__icon {
-            color: var(--accent-cyan);
         }
         .pricing-card__duration {
             font-size: 1rem;
@@ -1372,9 +1543,67 @@
         .pricing-card__btn:active {
             transform: translateY(0) scale(0.99);
         }
+        .pricing-card--annual .pricing-card__btn {
+            background-image: linear-gradient(135deg, rgba(251, 191, 36, 1) 0%, rgba(245, 158, 11, 1) 55%, rgba(217, 119, 6, 1) 100%);
+            color: #1a1205;
+            border: 1px solid rgba(251, 191, 36, 0.75);
+            box-shadow:
+                0 8px 24px rgba(251, 191, 36, 0.35),
+                0 0 20px rgba(251, 191, 36, 0.25);
+            text-shadow: none;
+        }
+        .pricing-card--annual .pricing-card__btn:hover {
+            background-image: linear-gradient(135deg, rgba(252, 211, 77, 1) 0%, rgba(251, 191, 36, 1) 55%, rgba(245, 158, 11, 1) 100%);
+            color: #1a1205;
+            border-color: rgba(251, 191, 36, 0.95);
+            box-shadow:
+                0 12px 32px rgba(251, 191, 36, 0.45),
+                0 0 30px rgba(251, 191, 36, 0.35);
+            filter: none;
+        }
+        /* Border beam: feixe de luz percorrendo a borda */
+        .pricing-card.featured::before,
+        .pricing-card--annual::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: 2;
+            padding: 2px;
+            border-radius: inherit;
+            pointer-events: none;
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask-composite: exclude;
+            animation: border-beam 5s linear infinite;
+        }
+        .pricing-card--annual::before {
+            background: conic-gradient(
+                from var(--beam-angle),
+                rgba(251, 191, 36, 0) 0deg,
+                rgba(251, 191, 36, 0) 55deg,
+                rgba(251, 191, 36, 0.9) 100deg,
+                rgba(253, 230, 138, 1) 130deg,
+                rgba(251, 191, 36, 0.95) 170deg,
+                rgba(251, 191, 36, 0) 230deg,
+                rgba(251, 191, 36, 0) 360deg
+            );
+        }
+        .pricing-card.featured::before {
+            background: conic-gradient(
+                from var(--beam-angle),
+                rgba(34, 211, 238, 0) 0deg,
+                rgba(34, 211, 238, 0) 55deg,
+                rgba(34, 211, 238, 0.9) 100deg,
+                rgba(167, 139, 250, 1) 135deg,
+                rgba(124, 92, 255, 0.95) 170deg,
+                rgba(34, 211, 238, 0) 230deg,
+                rgba(34, 211, 238, 0) 360deg
+            );
+        }
 
         /* ==========================================
-           15. DEPOIMENTOS
+           16. DEPOIMENTOS
            ========================================== */
         .testimonials {
             padding: 100px 0;
@@ -1438,7 +1667,7 @@
         }
 
         /* ==========================================
-           16. FAQ
+           17. FAQ
            ========================================== */
         .faq {
             padding: 100px 0;
@@ -1467,6 +1696,12 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
+            width: 100%;
+            border: 0;
+            background: transparent;
+            color: inherit;
+            font-family: inherit;
+            text-align: left;
             padding: 20px 24px;
             font-weight: 600;
             font-size: 0.95rem;
@@ -1501,7 +1736,7 @@
         }
 
         /* ==========================================
-           17. CONTATO
+           18. CONTATO
            ========================================== */
         .contact {
             padding: 100px 0;
@@ -1632,7 +1867,7 @@
         }
 
         /* ==========================================
-           18. FOOTER
+           19. FOOTER
            ========================================== */
         .footer {
             padding: 60px 0 30px;
@@ -1671,6 +1906,9 @@
             margin-bottom: 10px;
         }
         .footer__col ul li a {
+            display: inline-flex;
+            align-items: center;
+            min-height: 44px;
             font-size: 0.85rem;
             color: var(--text-muted);
             transition: var(--transition);
@@ -1686,7 +1924,7 @@
             color: var(--text-muted);
         }
         .footer__disclaimer {
-            font-size: 0.7rem;
+            font-size: clamp(0.75rem, 1.8vw, 0.78rem);
             color: var(--text-muted);
             margin-top: 8px;
             max-width: 600px;
@@ -1695,7 +1933,7 @@
         }
 
         /* ==========================================
-           19. WHATSAPP FLUTUANTE
+           20. WHATSAPP FLUTUANTE
            ========================================== */
         .whatsapp-float {
             position: fixed;
@@ -1726,10 +1964,7 @@
         }
 
         /* ==========================================
-           20. RESPONSIVO
-           ========================================== */
-        /* ==========================================
-           20. RESPONSIVO (MOBILE-FIRST)
+           21. RESPONSIVO (MOBILE-FIRST)
            Base = celular. Breakpoints crescem com min-width.
            ========================================== */
 
@@ -1881,28 +2116,28 @@
         .devices__grid { gap: 12px; }
         .device-card { width: 110px; padding: 20px 10px; }
         .device-card i { font-size: 2rem; }
-        .device-card h4 { font-size: clamp(0.75rem, 1.8vw, 0.85rem); }
+        .device-card h3 { font-size: clamp(0.75rem, 1.8vw, 0.85rem); }
 
         /* --- Base: apps --- */
-        .apps__grid {
-            grid-template-columns: repeat(3, 1fr);
+        .apps__group {
             gap: 10px;
+            padding-right: 10px;
         }
         .app-card {
-            width: 100%;
-            padding: 15px 8px;
+            width: 132px;
+            flex: 0 0 132px;
+            padding: 0 0 14px;
             border-radius: var(--radius-sm);
         }
         .app-card__badge { display: none; }
         .app-card__icon {
-            width: 52px;
-            height: 52px;
-            margin-bottom: 6px;
-            border-radius: 12px;
+            width: 100%;
+            height: 96px;
+            margin: 0;
+            border-radius: calc(var(--radius-sm) - 1px) calc(var(--radius-sm) - 1px) 0 0;
         }
-        .app-card__stars { font-size: 0.75rem; margin-bottom: 4px; }
+        .app-card__stars { font-size: 0.75rem; margin: 10px 8px 4px; }
         .app-card__name { font-size: clamp(0.75rem, 2vw, 0.9rem); }
-        .app-card--desktop { display: none; }
 
         /* --- Base: preços em carrossel --- */
         .pricing { overflow: hidden; }
@@ -2096,28 +2331,28 @@
             .devices__grid { gap: 20px; }
             .device-card { width: 150px; padding: 30px; }
             .device-card i { font-size: 3rem; }
-            .device-card h4 { font-size: 0.85rem; }
+            .device-card h3 { font-size: 0.85rem; }
 
             /* Apps */
-            .apps__grid {
-                grid-template-columns: repeat(4, 1fr);
+            .apps__group {
                 gap: 20px;
+                padding-right: 20px;
             }
             .app-card {
-                width: 100%;
-                padding: 25px 15px;
+                width: 175px;
+                flex: 0 0 175px;
+                padding: 0 0 20px;
                 border-radius: var(--radius-md);
             }
             .app-card__badge { display: block; }
             .app-card__icon {
-                width: 85px;
-                height: 85px;
-                margin-bottom: 12px;
-                border-radius: 18px;
+                width: 100%;
+                height: 120px;
+                margin: 0;
+                border-radius: calc(var(--radius-md) - 1px) calc(var(--radius-md) - 1px) 0 0;
             }
-            .app-card__stars { font-size: 0.75rem; margin-bottom: 8px; }
+            .app-card__stars { font-size: 0.75rem; margin: 12px 10px 6px; }
             .app-card__name { font-size: 0.9rem; }
-            .app-card--desktop { display: block; }
 
             /* Preços voltam a ser grid */
             .pricing { overflow: visible; }
@@ -2212,7 +2447,7 @@
         }
 
         /* --------------------------------------------------------------------------
-           21. ACESSIBILIDADE E MOVIMENTO
+           22. ACESSIBILIDADE E MOVIMENTO
            -------------------------------------------------------------------------- */
         :where(a, button, input, select, textarea, [tabindex]):focus-visible {
             outline: 2px solid var(--accent-cyan);
@@ -2226,6 +2461,21 @@
                 animation-iteration-count: 1 !important;
                 transition-duration: 0.01ms !important;
                 scroll-behavior: auto !important;
+            }
+            .pricing-card--annual::before {
+                animation: none !important;
+                background: conic-gradient(from 0deg, rgba(251, 191, 36, 0.9), rgba(251, 191, 36, 0.25), rgba(251, 191, 36, 0.9));
+            }
+            .pricing-card.featured::before {
+                animation: none !important;
+                background: conic-gradient(from 0deg, rgba(34, 211, 238, 0.9), rgba(124, 92, 255, 0.3), rgba(34, 211, 238, 0.9));
+            }
+            .apps__track {
+                animation: none !important;
+                transform: none !important;
+            }
+            .apps__marquee {
+                overflow-x: auto;
             }
         }
     </style>
@@ -2247,8 +2497,8 @@
                 <a href="#contato">Contato</a>
             </div>
             <div class="navbar__cta">
-                <a href="https://wa.me/5513998074576?text=Ol%C3%A1!%20Quero%20meu%20teste%20gr%C3%A1tis%20de%204%20horas!" target="_blank">
-                    <i class="fab fa-whatsapp"></i> Teste Grátis
+                <a href="https://wa.me/5513998074576?text=Ol%C3%A1!%20Vim%20pelo%20site%20MaxTV%20e%20quero%20meu%20teste%20gr%C3%A1tis%20de%204%20horas!" target="_blank">
+                    <i class="fab fa-whatsapp" aria-hidden="true"></i> Teste Grátis
                 </a>
             </div>
             <button class="navbar__menu-btn" id="menuToggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobileMenu">
@@ -2269,8 +2519,8 @@
         <a href="#planos" class="mobile-link">Planos</a>
         <a href="#faq" class="mobile-link">FAQ</a>
         <a href="#contato" class="mobile-link">Contato</a>
-        <a href="https://wa.me/5513998074576?text=Ol%C3%A1!%20Quero%20meu%20teste%20gr%C3%A1tis%20de%204%20horas!" class="btn btn-primary" target="_blank">
-            <i class="fab fa-whatsapp"></i> Teste Grátis 4h
+        <a href="https://wa.me/5513998074576?text=Ol%C3%A1!%20Vim%20pelo%20site%20MaxTV%20e%20quero%20meu%20teste%20gr%C3%A1tis%20de%204%20horas!" class="btn btn-primary" target="_blank">
+            <i class="fab fa-whatsapp" aria-hidden="true"></i> Teste Grátis 4h
         </a>
     </div>
 
@@ -2280,7 +2530,7 @@
         <div class="hero__grid-pattern"></div>
         <div class="hero__content fade-up">
             <div class="hero__badge">
-                <i class="fas fa-bolt"></i>
+                <i class="fas fa-bolt" aria-hidden="true"></i>
                 Atualização Semanal de Conteúdo
             </div>
             <h1 class="hero__title">
@@ -2293,16 +2543,16 @@
                 <span class="highlight-text">Entretenimento completo</span> para você assistir quando e onde quiser.
             </p>
             <div class="hero__stats">
-                <span class="stats-mobile-hide"><i class="fas fa-mobile-alt"></i> <strong>Aplicativos</strong> Grátis</span>
-                <span><i class="fas fa-gift"></i> <strong>Teste Grátis</strong></span>
-                <span><i class="fas fa-bolt"></i> <strong>Ativação Automática</strong></span>
+                <span class="stats-mobile-hide"><i class="fas fa-mobile-alt" aria-hidden="true"></i> <strong>Aplicativos</strong> Grátis</span>
+                <span><i class="fas fa-gift" aria-hidden="true"></i> <strong>Teste Grátis</strong></span>
+                <span><i class="fas fa-bolt" aria-hidden="true"></i> <strong>Ativação Automática</strong></span>
             </div>
             <div class="hero__buttons">
-                <a href="https://wa.me/5513998074576?text=Ol%C3%A1!%20Quero%20meu%20teste%20gr%C3%A1tis%20de%204%20horas!" target="_blank" class="btn btn-primary btn-pulse">
-                    <i class="fab fa-whatsapp"></i> Teste Grátis 4 Horas
+                <a href="https://wa.me/5513998074576?text=Ol%C3%A1!%20Vim%20pelo%20site%20MaxTV%20e%20quero%20meu%20teste%20gr%C3%A1tis%20de%204%20horas!" target="_blank" class="btn btn-primary btn-pulse">
+                    <i class="fab fa-whatsapp" aria-hidden="true"></i> Teste Grátis 4 Horas
                 </a>
                 <a href="#planos" class="btn btn-secondary">
-                    <i class="fas fa-tag"></i> Ver Planos
+                    <i class="fas fa-tag" aria-hidden="true"></i> Ver Planos
                 </a>
             </div>
         </div>
@@ -2313,37 +2563,37 @@
         <p class="channels-bar__title">Conteúdo que você vai encontrar</p>
         <div class="marquee__viewport">
         <div class="marquee">
-            <div class="marquee__item netflix"><i class="fas fa-play-circle"></i> Netflix</div>
-            <div class="marquee__item prime"><i class="fas fa-play-circle"></i> Amazon Prime</div>
-            <div class="marquee__item disney"><i class="fas fa-play-circle"></i> Disney+</div>
-            <div class="marquee__item hbo"><i class="fas fa-play-circle"></i> HBO Max</div>
-            <div class="marquee__item sport"><i class="fas fa-futbol"></i> ESPN</div>
-            <div class="marquee__item sport"><i class="fas fa-futbol"></i> SporTV</div>
-            <div class="marquee__item globo"><i class="fas fa-globe-americas"></i> Globo</div>
-            <div class="marquee__item"><i class="fas fa-film"></i> Telecine</div>
-            <div class="marquee__item disney"><i class="fas fa-star"></i> Star+</div>
-            <div class="marquee__item"><i class="fas fa-child"></i> Cartoon Network</div>
-            <div class="marquee__item"><i class="fas fa-trophy"></i> Band Sports</div>
-            <div class="marquee__item"><i class="fas fa-landmark"></i> Discovery</div>
-            <div class="marquee__item"><i class="fas fa-play"></i> Paramount+</div>
-            <div class="marquee__item"><i class="fas fa-clapperboard"></i> Premiere</div>
-            <div class="marquee__item"><i class="fas fa-baseball-bat-ball"></i> Combate</div>
+            <div class="marquee__item netflix"><i class="fas fa-play-circle" aria-hidden="true"></i> Netflix</div>
+            <div class="marquee__item prime"><i class="fas fa-play-circle" aria-hidden="true"></i> Amazon Prime</div>
+            <div class="marquee__item disney"><i class="fas fa-play-circle" aria-hidden="true"></i> Disney+</div>
+            <div class="marquee__item hbo"><i class="fas fa-play-circle" aria-hidden="true"></i> HBO Max</div>
+            <div class="marquee__item sport"><i class="fas fa-futbol" aria-hidden="true"></i> ESPN</div>
+            <div class="marquee__item sport"><i class="fas fa-futbol" aria-hidden="true"></i> SporTV</div>
+            <div class="marquee__item globo"><i class="fas fa-globe-americas" aria-hidden="true"></i> Globo</div>
+            <div class="marquee__item"><i class="fas fa-film" aria-hidden="true"></i> Telecine</div>
+            <div class="marquee__item disney"><i class="fas fa-star" aria-hidden="true"></i> Star+</div>
+            <div class="marquee__item"><i class="fas fa-child" aria-hidden="true"></i> Cartoon Network</div>
+            <div class="marquee__item"><i class="fas fa-trophy" aria-hidden="true"></i> Band Sports</div>
+            <div class="marquee__item"><i class="fas fa-landmark" aria-hidden="true"></i> Discovery</div>
+            <div class="marquee__item"><i class="fas fa-play" aria-hidden="true"></i> Paramount+</div>
+            <div class="marquee__item"><i class="fas fa-clapperboard" aria-hidden="true"></i> Premiere</div>
+            <div class="marquee__item"><i class="fas fa-baseball-bat-ball" aria-hidden="true"></i> Combate</div>
             <!-- Duplicado para loop contínuo -->
-            <div class="marquee__item netflix"><i class="fas fa-play-circle"></i> Netflix</div>
-            <div class="marquee__item prime"><i class="fas fa-play-circle"></i> Amazon Prime</div>
-            <div class="marquee__item disney"><i class="fas fa-play-circle"></i> Disney+</div>
-            <div class="marquee__item hbo"><i class="fas fa-play-circle"></i> HBO Max</div>
-            <div class="marquee__item sport"><i class="fas fa-futbol"></i> ESPN</div>
-            <div class="marquee__item sport"><i class="fas fa-futbol"></i> SporTV</div>
-            <div class="marquee__item globo"><i class="fas fa-globe-americas"></i> Globo</div>
-            <div class="marquee__item"><i class="fas fa-film"></i> Telecine</div>
-            <div class="marquee__item disney"><i class="fas fa-star"></i> Star+</div>
-            <div class="marquee__item"><i class="fas fa-child"></i> Cartoon Network</div>
-            <div class="marquee__item"><i class="fas fa-trophy"></i> Band Sports</div>
-            <div class="marquee__item"><i class="fas fa-landmark"></i> Discovery</div>
-            <div class="marquee__item"><i class="fas fa-play"></i> Paramount+</div>
-            <div class="marquee__item"><i class="fas fa-clapperboard"></i> Premiere</div>
-            <div class="marquee__item"><i class="fas fa-baseball-bat-ball"></i> Combate</div>
+            <div class="marquee__item netflix"><i class="fas fa-play-circle" aria-hidden="true"></i> Netflix</div>
+            <div class="marquee__item prime"><i class="fas fa-play-circle" aria-hidden="true"></i> Amazon Prime</div>
+            <div class="marquee__item disney"><i class="fas fa-play-circle" aria-hidden="true"></i> Disney+</div>
+            <div class="marquee__item hbo"><i class="fas fa-play-circle" aria-hidden="true"></i> HBO Max</div>
+            <div class="marquee__item sport"><i class="fas fa-futbol" aria-hidden="true"></i> ESPN</div>
+            <div class="marquee__item sport"><i class="fas fa-futbol" aria-hidden="true"></i> SporTV</div>
+            <div class="marquee__item globo"><i class="fas fa-globe-americas" aria-hidden="true"></i> Globo</div>
+            <div class="marquee__item"><i class="fas fa-film" aria-hidden="true"></i> Telecine</div>
+            <div class="marquee__item disney"><i class="fas fa-star" aria-hidden="true"></i> Star+</div>
+            <div class="marquee__item"><i class="fas fa-child" aria-hidden="true"></i> Cartoon Network</div>
+            <div class="marquee__item"><i class="fas fa-trophy" aria-hidden="true"></i> Band Sports</div>
+            <div class="marquee__item"><i class="fas fa-landmark" aria-hidden="true"></i> Discovery</div>
+            <div class="marquee__item"><i class="fas fa-play" aria-hidden="true"></i> Paramount+</div>
+            <div class="marquee__item"><i class="fas fa-clapperboard" aria-hidden="true"></i> Premiere</div>
+            <div class="marquee__item"><i class="fas fa-baseball-bat-ball" aria-hidden="true"></i> Combate</div>
         </div>
         </div>
     </div>
@@ -2352,24 +2602,29 @@
     <section class="video-showcase fade-up">
         <div class="container">
             <div class="video-showcase__wrapper">
-                <video id="showcaseVideo">
-                    <source src="https://res.cloudinary.com/dqzciuapk/video/upload/v1775704885/maxtv/video-demo.mp4" type="video/mp4">
-                    Seu navegador não suporta vídeo.
-                </video>
-                <div class="video-showcase__badge">
-                    <i class="fas fa-play"></i> ASSISTIR AGORA
-                </div>
-                <div class="video-showcase__play" id="videoPlayBtn" onclick="playVideo()">
-                    <div class="video-showcase__play-icon">
-                        <i class="fas fa-play"></i>
+                <div class="video-container">
+                    <video id="showcaseVideo" preload="metadata" playsinline controls tabindex="0" aria-label="Vídeo de demonstração da MaxTV">
+                        <source src="https://res.cloudinary.com/dqzciuapk/video/upload/v1775704885/maxtv/video-demo.mp4" type="video/mp4">
+                        Seu navegador não suporta vídeo.
+                    </video>
+                    <div class="video-mask" id="videoMask">
+                        <button type="button" class="video-mask__button" id="videoPlayBtn" aria-label="Reproduzir vídeo de demonstração">
+                            <span class="video-mask__icon">
+                                <i class="fas fa-play" aria-hidden="true"></i>
+                            </span>
+                            <span class="video-mask__text">Clique para assistir</span>
+                        </button>
                     </div>
+                </div>
+                <div class="video-showcase__badge">
+                    <i class="fas fa-play" aria-hidden="true"></i> ASSISTIR AGORA
                 </div>
             </div>
         </div>
     </section>
 
     <!-- LANÇAMENTOS -->
-    <section class="releases" id="releases" tabindex="-1">
+    <section class="releases" id="releases" tabindex="-1" aria-label="Lançamentos">
         <div class="container">
             <div class="section-header fade-up">
                 <p class="section-header__subtitle">Acabou de Estrear</p>
@@ -2392,60 +2647,137 @@
     </section>
 
     <!-- APPS PARCEIROS -->
-    <section class="apps" id="apps">
+    <section class="apps" id="apps" aria-label="Aplicativos parceiros">
         <div class="container">
             <div class="section-header fade-up">
                 <p class="section-header__subtitle section-header__subtitle--large">Grátis para você</p>
                 <h2 class="section-header__title">Aplicativos <span class="highlight">Parceiros</span></h2>
                 <p class="section-header__desc">Baixe nossos apps parceiros e comece a assistir agora.</p>
             </div>
-            <div class="apps__grid fade-up">
-                <a href="https://wa.me/5513998074576?text=QUERO%20MEU%20TESTE%20GR%C3%81TIS%20AGORA!" target="_blank" class="app-card card-assist">
-                    <img src="https://m.media-amazon.com/images/I/81VIPvLxCiL.png" alt="Assist Plus" class="app-card__icon" loading="lazy">
-                    <span class="app-card__stars">★★★★★</span>
-                    <p class="app-card__name">Assist Plus</p>
-                </a>
-                <a href="https://wa.me/5513998074576?text=QUERO%20MEU%20TESTE%20GR%C3%81TIS%20AGORA!" target="_blank" class="app-card card-playsim">
-                    <img src="https://m.media-amazon.com/images/I/61QjUxDNMRL.png" alt="Playsim" class="app-card__icon" loading="lazy">
-                    <span class="app-card__stars">★★★★★</span>
-                    <p class="app-card__name">Playsim</p>
-                </a>
-                <a href="https://wa.me/5513998074576?text=QUERO%20MEU%20TESTE%20GR%C3%81TIS%20AGORA!" target="_blank" class="app-card card-blessed">
-                    <img src="https://play-lh.googleusercontent.com/sZhx9HbFyQ7UIS5JYy2fYsJJnaOBD3-Y0jc9hoe9lQ6GX1kB4K2K9wdYHobKvWkSqwA" alt="Blessed" class="app-card__icon" loading="lazy">
-                    <span class="app-card__stars">★★★★★</span>
-                    <p class="app-card__name">Blessed</p>
-                </a>
-                <a href="https://wa.me/5513998074576?text=QUERO%20MEU%20TESTE%20GR%C3%81TIS%20AGORA!" target="_blank" class="app-card card-fun">
-                    <img src="https://iili.io/fmHh3Al.jpg" alt="Fun Play" class="app-card__icon" loading="lazy">
-                    <span class="app-card__stars">★★★★★</span>
-                    <p class="app-card__name">Fun Play</p>
-                </a>
-                <a href="https://wa.me/5513998074576?text=QUERO%20MEU%20TESTE%20GR%C3%81TIS%20AGORA!" target="_blank" class="app-card card-lazer">
-                    <img src="https://play-lh.googleusercontent.com/mpiK0UdwToVpAqCI5nDtLsppEq3u4Utc5gJhDthqKYImu9jxZ7uzRP032845EIb_vg" alt="Lazer Play" class="app-card__icon" loading="lazy">
-                    <span class="app-card__stars">★★★★★</span>
-                    <p class="app-card__name">Lazer Play</p>
-                </a>
-                <a href="https://wa.me/5513998074576?text=QUERO%20MEU%20TESTE%20GR%C3%81TIS%20AGORA!" target="_blank" class="app-card card-smarters">
-                    <img src="https://img.utdstc.com/icon/5d7/835/5d7835a806b1cdc5d7427879634e5417a12f8c94e6dab633dcd7ff81be9115a1:200" alt="Smarters Pro" class="app-card__icon" loading="lazy">
-                    <span class="app-card__stars">★★★★★</span>
-                    <p class="app-card__name">Smarters Pro</p>
-                </a>
-                <a href="https://wa.me/5513998074576?text=QUERO%20MEU%20TESTE%20GR%C3%81TIS%20AGORA!" target="_blank" class="app-card card-xciptv app-card--desktop">
-                    <img src="https://iili.io/fy93PpI.webp" alt="XCIPTV" class="app-card__icon" loading="lazy">
-                    <span class="app-card__stars">★★★★★</span>
-                    <p class="app-card__name">XCIPTV</p>
-                </a>
-                <a href="https://wa.me/5513998074576?text=QUERO%20MEU%20TESTE%20GR%C3%81TIS%20AGORA!" target="_blank" class="app-card card-club app-card--desktop">
-                    <img src="https://iili.io/fy9KdSR.png" alt="Smart TV Club" class="app-card__icon" loading="lazy">
-                    <span class="app-card__stars">★★★★★</span>
-                    <p class="app-card__name">Smart TV Club</p>
-                </a>
+            <div class="apps__marquee fade-up">
+                <div class="apps__track">
+                    <div class="apps__group">
+                        <a href="https://wa.me/5513998074576?text=Ol%C3%A1!%20Vim%20pelo%20site%20MaxTV%20e%20quero%20meu%20teste%20gr%C3%A1tis%20de%204%20horas!" target="_blank" class="app-card card-assist">
+                            <img decoding="async" src="https://m.media-amazon.com/images/I/81VIPvLxCiL.png" alt="Assist Plus" class="app-card__icon" loading="lazy">
+                            <span class="app-card__stars">★★★★★</span>
+                            <p class="app-card__name">Assist Plus</p>
+                        </a>
+                        <a href="https://wa.me/5513998074576?text=Ol%C3%A1!%20Vim%20pelo%20site%20MaxTV%20e%20quero%20meu%20teste%20gr%C3%A1tis%20de%204%20horas!" target="_blank" class="app-card card-playsim">
+                            <img decoding="async" src="https://m.media-amazon.com/images/I/61QjUxDNMRL.png" alt="Playsim" class="app-card__icon" loading="lazy">
+                            <span class="app-card__stars">★★★★★</span>
+                            <p class="app-card__name">Playsim</p>
+                        </a>
+                        <a href="https://wa.me/5513998074576?text=Ol%C3%A1!%20Vim%20pelo%20site%20MaxTV%20e%20quero%20meu%20teste%20gr%C3%A1tis%20de%204%20horas!" target="_blank" class="app-card card-fun">
+                            <img decoding="async" src="https://iili.io/fmHh3Al.jpg" alt="Fun Play" class="app-card__icon" loading="lazy">
+                            <span class="app-card__stars">★★★★★</span>
+                            <p class="app-card__name">Fun Play</p>
+                        </a>
+                        <a href="https://wa.me/5513998074576?text=Ol%C3%A1!%20Vim%20pelo%20site%20MaxTV%20e%20quero%20meu%20teste%20gr%C3%A1tis%20de%204%20horas!" target="_blank" class="app-card card-smarters">
+                            <img decoding="async" src="https://img.utdstc.com/icon/5d7/835/5d7835a806b1cdc5d7427879634e5417a12f8c94e6dab633dcd7ff81be9115a1:200" alt="Smarters Pro" class="app-card__icon" loading="lazy">
+                            <span class="app-card__stars">★★★★★</span>
+                            <p class="app-card__name">Smarters Pro</p>
+                        </a>
+                        <a href="https://wa.me/5513998074576?text=Ol%C3%A1!%20Vim%20pelo%20site%20MaxTV%20e%20quero%20meu%20teste%20gr%C3%A1tis%20de%204%20horas!" target="_blank" class="app-card card-xciptv">
+                            <img decoding="async" src="https://iili.io/fy93PpI.webp" alt="XCIPTV" class="app-card__icon" loading="lazy">
+                            <span class="app-card__stars">★★★★★</span>
+                            <p class="app-card__name">XCIPTV</p>
+                        </a>
+                        <a href="https://wa.me/5513998074576?text=Ol%C3%A1!%20Vim%20pelo%20site%20MaxTV%20e%20quero%20meu%20teste%20gr%C3%A1tis%20de%204%20horas!" target="_blank" class="app-card card-club">
+                            <img decoding="async" src="https://iili.io/fy9KdSR.png" alt="Smart TV Club" class="app-card__icon" loading="lazy">
+                            <span class="app-card__stars">★★★★★</span>
+                            <p class="app-card__name">Smart TV Club</p>
+                        </a>
+                        <a href="https://wa.me/5513998074576?text=Ol%C3%A1!%20Vim%20pelo%20site%20MaxTV%20e%20quero%20meu%20teste%20gr%C3%A1tis%20de%204%20horas!" target="_blank" class="app-card card-zuxo">
+                            <img decoding="async" src="https://yourimageshare.com/ib/KJ7BFFS4us.png" alt="Zuxo Player" class="app-card__icon" loading="lazy">
+                            <span class="app-card__stars">★★★★★</span>
+                            <p class="app-card__name">Zuxo Player</p>
+                        </a>
+                        <a href="https://wa.me/5513998074576?text=Ol%C3%A1!%20Vim%20pelo%20site%20MaxTV%20e%20quero%20meu%20teste%20gr%C3%A1tis%20de%204%20horas!" target="_blank" class="app-card card-ss">
+                            <img decoding="async" src="https://yourimageshare.com/ib/PX9kmguHh0.png" alt="SS Player" class="app-card__icon" loading="lazy">
+                            <span class="app-card__stars">★★★★★</span>
+                            <p class="app-card__name">SS Player</p>
+                        </a>
+                        <a href="https://wa.me/5513998074576?text=Ol%C3%A1!%20Vim%20pelo%20site%20MaxTV%20e%20quero%20meu%20teste%20gr%C3%A1tis%20de%204%20horas!" target="_blank" class="app-card card-lotus">
+                            <img decoding="async" src="https://yourimageshare.com/ib/jA0scstbRP.png" alt="Lótus" class="app-card__icon" loading="lazy">
+                            <span class="app-card__stars">★★★★★</span>
+                            <p class="app-card__name">Lótus</p>
+                        </a>
+                        <a href="https://wa.me/5513998074576?text=Ol%C3%A1!%20Vim%20pelo%20site%20MaxTV%20e%20quero%20meu%20teste%20gr%C3%A1tis%20de%204%20horas!" target="_blank" class="app-card card-classe">
+                            <img decoding="async" src="https://yourimageshare.com/ib/kCDUPX7sGi.png" alt="Classe Play" class="app-card__icon" loading="lazy">
+                            <span class="app-card__stars">★★★★★</span>
+                            <p class="app-card__name">Classe Play</p>
+                        </a>
+                        <a href="https://wa.me/5513998074576?text=Ol%C3%A1!%20Vim%20pelo%20site%20MaxTV%20e%20quero%20meu%20teste%20gr%C3%A1tis%20de%204%20horas!" target="_blank" class="app-card card-lazer">
+                            <img decoding="async" src="https://play-lh.googleusercontent.com/mpiK0UdwToVpAqCI5nDtLsppEq3u4Utc5gJhDthqKYImu9jxZ7uzRP032845EIb_vg" alt="Lazer Play" class="app-card__icon" loading="lazy">
+                            <span class="app-card__stars">★★★★★</span>
+                            <p class="app-card__name">Lazer Play</p>
+                        </a>
+                    </div>
+                    <!-- Cópia para loop infinito (ignorada por leitores de tela e teclado) -->
+                    <div class="apps__group" aria-hidden="true">
+                        <a tabindex="-1" href="https://wa.me/5513998074576?text=Ol%C3%A1!%20Vim%20pelo%20site%20MaxTV%20e%20quero%20meu%20teste%20gr%C3%A1tis%20de%204%20horas!" target="_blank" class="app-card card-assist">
+                            <img decoding="async" src="https://m.media-amazon.com/images/I/81VIPvLxCiL.png" alt="" class="app-card__icon" loading="lazy">
+                            <span class="app-card__stars">★★★★★</span>
+                            <p class="app-card__name">Assist Plus</p>
+                        </a>
+                        <a tabindex="-1" href="https://wa.me/5513998074576?text=Ol%C3%A1!%20Vim%20pelo%20site%20MaxTV%20e%20quero%20meu%20teste%20gr%C3%A1tis%20de%204%20horas!" target="_blank" class="app-card card-playsim">
+                            <img decoding="async" src="https://m.media-amazon.com/images/I/61QjUxDNMRL.png" alt="" class="app-card__icon" loading="lazy">
+                            <span class="app-card__stars">★★★★★</span>
+                            <p class="app-card__name">Playsim</p>
+                        </a>
+                        <a tabindex="-1" href="https://wa.me/5513998074576?text=Ol%C3%A1!%20Vim%20pelo%20site%20MaxTV%20e%20quero%20meu%20teste%20gr%C3%A1tis%20de%204%20horas!" target="_blank" class="app-card card-fun">
+                            <img decoding="async" src="https://iili.io/fmHh3Al.jpg" alt="" class="app-card__icon" loading="lazy">
+                            <span class="app-card__stars">★★★★★</span>
+                            <p class="app-card__name">Fun Play</p>
+                        </a>
+                        <a tabindex="-1" href="https://wa.me/5513998074576?text=Ol%C3%A1!%20Vim%20pelo%20site%20MaxTV%20e%20quero%20meu%20teste%20gr%C3%A1tis%20de%204%20horas!" target="_blank" class="app-card card-smarters">
+                            <img decoding="async" src="https://img.utdstc.com/icon/5d7/835/5d7835a806b1cdc5d7427879634e5417a12f8c94e6dab633dcd7ff81be9115a1:200" alt="" class="app-card__icon" loading="lazy">
+                            <span class="app-card__stars">★★★★★</span>
+                            <p class="app-card__name">Smarters Pro</p>
+                        </a>
+                        <a tabindex="-1" href="https://wa.me/5513998074576?text=Ol%C3%A1!%20Vim%20pelo%20site%20MaxTV%20e%20quero%20meu%20teste%20gr%C3%A1tis%20de%204%20horas!" target="_blank" class="app-card card-xciptv">
+                            <img decoding="async" src="https://iili.io/fy93PpI.webp" alt="" class="app-card__icon" loading="lazy">
+                            <span class="app-card__stars">★★★★★</span>
+                            <p class="app-card__name">XCIPTV</p>
+                        </a>
+                        <a tabindex="-1" href="https://wa.me/5513998074576?text=Ol%C3%A1!%20Vim%20pelo%20site%20MaxTV%20e%20quero%20meu%20teste%20gr%C3%A1tis%20de%204%20horas!" target="_blank" class="app-card card-club">
+                            <img decoding="async" src="https://iili.io/fy9KdSR.png" alt="" class="app-card__icon" loading="lazy">
+                            <span class="app-card__stars">★★★★★</span>
+                            <p class="app-card__name">Smart TV Club</p>
+                        </a>
+                        <a tabindex="-1" href="https://wa.me/5513998074576?text=Ol%C3%A1!%20Vim%20pelo%20site%20MaxTV%20e%20quero%20meu%20teste%20gr%C3%A1tis%20de%204%20horas!" target="_blank" class="app-card card-zuxo">
+                            <img decoding="async" src="https://yourimageshare.com/ib/KJ7BFFS4us.png" alt="" class="app-card__icon" loading="lazy">
+                            <span class="app-card__stars">★★★★★</span>
+                            <p class="app-card__name">Zuxo Player</p>
+                        </a>
+                        <a tabindex="-1" href="https://wa.me/5513998074576?text=Ol%C3%A1!%20Vim%20pelo%20site%20MaxTV%20e%20quero%20meu%20teste%20gr%C3%A1tis%20de%204%20horas!" target="_blank" class="app-card card-ss">
+                            <img decoding="async" src="https://yourimageshare.com/ib/PX9kmguHh0.png" alt="" class="app-card__icon" loading="lazy">
+                            <span class="app-card__stars">★★★★★</span>
+                            <p class="app-card__name">SS Player</p>
+                        </a>
+                        <a tabindex="-1" href="https://wa.me/5513998074576?text=Ol%C3%A1!%20Vim%20pelo%20site%20MaxTV%20e%20quero%20meu%20teste%20gr%C3%A1tis%20de%204%20horas!" target="_blank" class="app-card card-lotus">
+                            <img decoding="async" src="https://yourimageshare.com/ib/jA0scstbRP.png" alt="" class="app-card__icon" loading="lazy">
+                            <span class="app-card__stars">★★★★★</span>
+                            <p class="app-card__name">Lótus</p>
+                        </a>
+                        <a tabindex="-1" href="https://wa.me/5513998074576?text=Ol%C3%A1!%20Vim%20pelo%20site%20MaxTV%20e%20quero%20meu%20teste%20gr%C3%A1tis%20de%204%20horas!" target="_blank" class="app-card card-classe">
+                            <img decoding="async" src="https://yourimageshare.com/ib/kCDUPX7sGi.png" alt="" class="app-card__icon" loading="lazy">
+                            <span class="app-card__stars">★★★★★</span>
+                            <p class="app-card__name">Classe Play</p>
+                        </a>
+                        <a tabindex="-1" href="https://wa.me/5513998074576?text=Ol%C3%A1!%20Vim%20pelo%20site%20MaxTV%20e%20quero%20meu%20teste%20gr%C3%A1tis%20de%204%20horas!" target="_blank" class="app-card card-lazer">
+                            <img decoding="async" src="https://play-lh.googleusercontent.com/mpiK0UdwToVpAqCI5nDtLsppEq3u4Utc5gJhDthqKYImu9jxZ7uzRP032845EIb_vg" alt="" class="app-card__icon" loading="lazy">
+                            <span class="app-card__stars">★★★★★</span>
+                            <p class="app-card__name">Lazer Play</p>
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- CATEGORIAS -->
-    <section class="categories" id="categorias">
+    <section class="categories" id="categorias" aria-label="Categorias e canais">
         <div class="container">
             <div class="section-header fade-up">
                 <p class="section-header__subtitle section-header__subtitle--large">Para toda a família</p>
@@ -2454,7 +2786,7 @@
             <div class="categories__grid fade-up">
                 <div class="category-card category-card--sports">
                     <div class="category-card__icon">
-                        <i class="fas fa-futbol"></i>
+                        <i class="fas fa-futbol" aria-hidden="true"></i>
                     </div>
                     <div class="category-card__glow"></div>
                     <h3 class="category-card__title">Esportes ao Vivo</h3>
@@ -2462,7 +2794,7 @@
                 </div>
                 <div class="category-card category-card--movies">
                     <div class="category-card__icon">
-                        <i class="fas fa-film"></i>
+                        <i class="fas fa-film" aria-hidden="true"></i>
                     </div>
                     <div class="category-card__glow"></div>
                     <h3 class="category-card__title">Filmes de Cinema</h3>
@@ -2470,7 +2802,7 @@
                 </div>
                 <div class="category-card category-card--series">
                     <div class="category-card__icon">
-                        <i class="fas fa-tv"></i>
+                        <i class="fas fa-tv" aria-hidden="true"></i>
                     </div>
                     <div class="category-card__glow"></div>
                     <h3 class="category-card__title">Séries Completas</h3>
@@ -2478,7 +2810,7 @@
                 </div>
                 <div class="category-card category-card--kids">
                     <div class="category-card__icon">
-                        <i class="fas fa-child"></i>
+                        <i class="fas fa-child" aria-hidden="true"></i>
                     </div>
                     <div class="category-card__glow"></div>
                     <h3 class="category-card__title">Canal Infantil</h3>
@@ -2486,7 +2818,7 @@
                 </div>
                 <div class="category-card category-card--docs">
                     <div class="category-card__icon">
-                        <i class="fas fa-book-open"></i>
+                        <i class="fas fa-book-open" aria-hidden="true"></i>
                     </div>
                     <div class="category-card__glow"></div>
                     <h3 class="category-card__title">Documentários</h3>
@@ -2494,7 +2826,7 @@
                 </div>
                 <div class="category-card category-card--music">
                     <div class="category-card__icon">
-                        <i class="fas fa-music"></i>
+                        <i class="fas fa-music" aria-hidden="true"></i>
                     </div>
                     <div class="category-card__glow"></div>
                     <h3 class="category-card__title">Música & Variedades</h3>
@@ -2502,7 +2834,7 @@
                 </div>
                 <div class="category-card category-card--intl">
                     <div class="category-card__icon">
-                        <i class="fas fa-globe-americas"></i>
+                        <i class="fas fa-globe-americas" aria-hidden="true"></i>
                     </div>
                     <div class="category-card__glow"></div>
                     <h3 class="category-card__title">Canais Internacionais</h3>
@@ -2510,7 +2842,7 @@
                 </div>
                 <div class="category-card category-card--adult">
                     <div class="category-card__icon">
-                        <i class="fas fa-fire"></i>
+                        <i class="fas fa-fire" aria-hidden="true"></i>
                     </div>
                     <div class="category-card__glow"></div>
                     <h3 class="category-card__title">Adulto (+18)</h3>
@@ -2521,7 +2853,7 @@
     </section>
 
     <!-- DIFERENCIAIS -->
-    <section class="features" id="diferenciais">
+    <section class="features" id="diferenciais" aria-label="Nossos diferenciais">
         <div class="container">
             <div class="section-header fade-up">
                 <p class="section-header__subtitle">Por que nos escolher?</p>
@@ -2529,56 +2861,56 @@
             </div>
             <div class="features__grid fade-up">
                 <div class="feature-card">
-                    <div class="feature-card__icon"><i class="fas fa-tv"></i></div>
+                    <div class="feature-card__icon"><i class="fas fa-tv" aria-hidden="true"></i></div>
                     <div class="feature-card__content">
                         <h3 class="feature-card__title">Qualidade Full HD e 4K</h3>
                         <p class="feature-card__desc">Imagem cristalina e som impecável.</p>
                     </div>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-card__icon"><i class="fas fa-bolt"></i></div>
+                    <div class="feature-card__icon"><i class="fas fa-bolt" aria-hidden="true"></i></div>
                     <div class="feature-card__content">
                         <h3 class="feature-card__title">Sem Travamentos</h3>
                         <p class="feature-card__desc">Servidores premium com uptime de 99,9%.</p>
                     </div>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-card__icon"><i class="fas fa-magic"></i></div>
+                    <div class="feature-card__icon"><i class="fas fa-magic" aria-hidden="true"></i></div>
                     <div class="feature-card__content">
                         <h3 class="feature-card__title">Ativação Automática</h3>
                         <p class="feature-card__desc">Teste e ativação via WhatsApp na hora.</p>
                     </div>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-card__icon"><i class="fas fa-mobile-alt"></i></div>
+                    <div class="feature-card__icon"><i class="fas fa-mobile-alt" aria-hidden="true"></i></div>
                     <div class="feature-card__content">
                         <h3 class="feature-card__title">Multi-Dispositivos</h3>
                         <p class="feature-card__desc">Smart TV, celular, tablet, PC, TV Box.</p>
                     </div>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-card__icon"><i class="fas fa-sync-alt"></i></div>
+                    <div class="feature-card__icon"><i class="fas fa-sync-alt" aria-hidden="true"></i></div>
                     <div class="feature-card__content">
                         <h3 class="feature-card__title">Atualização Semanal</h3>
                         <p class="feature-card__desc">Novos canais, filmes e séries toda semana.</p>
                     </div>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-card__icon"><i class="fas fa-clock"></i></div>
+                    <div class="feature-card__icon"><i class="fas fa-clock" aria-hidden="true"></i></div>
                     <div class="feature-card__content">
                         <h3 class="feature-card__title">Grade Completa 24h</h3>
                         <p class="feature-card__desc">Conteúdo sob demanda + canais ao vivo.</p>
                     </div>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-card__icon"><i class="fas fa-shield-alt"></i></div>
+                    <div class="feature-card__icon"><i class="fas fa-shield-alt" aria-hidden="true"></i></div>
                     <div class="feature-card__content">
                         <h3 class="feature-card__title">Ativação Imediata</h3>
                         <p class="feature-card__desc">Acesso em até 5 minutos após pagamento.</p>
                     </div>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-card__icon"><i class="fas fa-gift"></i></div>
+                    <div class="feature-card__icon"><i class="fas fa-gift" aria-hidden="true"></i></div>
                     <div class="feature-card__content">
                         <h3 class="feature-card__title">Teste Grátis 4 Horas</h3>
                         <p class="feature-card__desc">Experimente antes de assinar.</p>
@@ -2586,11 +2918,10 @@
                 </div>
                 </div>
             </div>
-        </div>
     </section>
 
     <!-- DISPOSITIVOS -->
-    <section class="devices" id="dispositivos">
+    <section class="devices" id="dispositivos" aria-label="Dispositivos compatíveis">
         <div class="container">
             <div class="section-header fade-up">
                 <p class="section-header__subtitle">Compatível com tudo</p>
@@ -2598,35 +2929,62 @@
             </div>
             <div class="devices__grid fade-up">
                 <div class="device-card">
-                    <i class="fas fa-tv"></i>
-                    <h4>SAMSUNG</h4>
+                    <i class="fas fa-tv" aria-hidden="true"></i>
+                    <h3>SAMSUNG</h3>
                 </div>
                 <div class="device-card">
-                    <i class="fas fa-desktop"></i>
-                    <h4>LG TV</h4>
+                    <i class="fas fa-desktop" aria-hidden="true"></i>
+                    <h3>LG TV</h3>
                 </div>
                 <div class="device-card">
-                    <i class="fas fa-fire"></i>
-                    <h4>FIRE TV</h4>
+                    <i class="fas fa-fire" aria-hidden="true"></i>
+                    <h3>FIRE TV</h3>
                 </div>
                 <div class="device-card">
-                    <i class="fab fa-android"></i>
-                    <h4>ANDROID</h4>
+                    <i class="fab fa-android" aria-hidden="true"></i>
+                    <h3>ANDROID</h3>
                 </div>
                 <div class="device-card">
-                    <i class="fab fa-windows"></i>
-                    <h4>WINDOWS</h4>
+                    <i class="fab fa-windows" aria-hidden="true"></i>
+                    <h3>WINDOWS</h3>
                 </div>
                 <div class="device-card">
-                    <i class="fas fa-play-circle"></i>
-                    <h4>ROKU TV</h4>
+                    <i class="fas fa-play-circle" aria-hidden="true"></i>
+                    <h3>ROKU TV</h3>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- CONTAGEM REGRESSIVA -->
+    <section class="countdown" id="countdown" aria-label="Oferta por tempo limitado">
+        <div class="container">
+            <div class="countdown__card fade-up">
+                <h2 class="countdown__title">Oferta por tempo limitado</h2>
+                <p class="countdown__desc">Garanta seu teste grátis de 4 horas antes que o tempo acabe.</p>
+                <div class="countdown__grid" role="timer" aria-live="off">
+                    <div class="countdown__box">
+                        <span class="countdown__value" id="timerHours">04</span>
+                        <span class="countdown__label">Horas</span>
+                    </div>
+                    <div class="countdown__box">
+                        <span class="countdown__value" id="timerMinutes">00</span>
+                        <span class="countdown__label">Minutos</span>
+                    </div>
+                    <div class="countdown__box">
+                        <span class="countdown__value" id="timerSeconds">00</span>
+                        <span class="countdown__label">Segundos</span>
+                    </div>
+                </div>
+                <a class="btn btn-primary countdown__cta" href="https://wa.me/5513998074576?text=Ol%C3%A1!%20Vim%20pelo%20site%20MaxTV%20e%20quero%20meu%20teste%20gr%C3%A1tis%20de%204%20horas!" target="_blank">
+                    <i class="fab fa-whatsapp" aria-hidden="true"></i> Quero meu teste grátis
+                </a>
+            </div>
+        </div>
+    </section>
+
     <!-- PREÇOS -->
-    <section class="pricing" id="planos">
+    <section class="pricing" id="planos" aria-label="Planos e preços">
         <div class="container">
             <div class="section-header fade-up">
                 <p class="section-header__subtitle">Planos para você</p>
@@ -2636,83 +2994,81 @@
             <div class="pricing__grid fade-up">
                 <!-- 30 dias -->
                 <div class="pricing-card">
-                    <i class="pricing-card__icon fas fa-calendar-alt"></i>
+                    <i class="pricing-card__icon fas fa-calendar-alt" aria-hidden="true"></i>
                     <p class="pricing-card__duration">Mensal</p>
                     <div class="pricing-card__price">
                         <span class="pricing-card__currency">R$</span>
                         <span class="pricing-card__value">20</span>
                     </div>
-                    <p class="pricing-card__info"><i class="fas fa-clock"></i> 30 dias</p>
+                    <p class="pricing-card__info"><i class="fas fa-clock" aria-hidden="true"></i> 30 dias</p>
                     <ul class="pricing-card__features">
-                        <li><i class="fas fa-tv"></i> 1.500+ Canais ao Vivo</li>
-                        <li><i class="fas fa-film"></i> 50.000+ Filmes e Séries</li>
-                        <li><i class="fas fa-video"></i> Full HD & 4K</li>
-                        <li><i class="fas fa-mobile-alt"></i> 1 Tela</li>
-                        <li><i class="fas fa-magic"></i> Ativação Automática</li>
+                        <li><i class="fas fa-tv" aria-hidden="true"></i> 1.500+ Canais ao Vivo</li>
+                        <li><i class="fas fa-film" aria-hidden="true"></i> 50.000+ Filmes e Séries</li>
+                        <li><i class="fas fa-video" aria-hidden="true"></i> Full HD & 4K</li>
+                        <li><i class="fas fa-mobile-alt" aria-hidden="true"></i> 1 Tela</li>
+                        <li><i class="fas fa-magic" aria-hidden="true"></i> Ativação Automática</li>
                     </ul>
-                    <a href="https://wa.me/5513998074576?text=Ol%C3%A1!%20Quero%20o%20plano%20Mensal%20de%20R%2420!" target="_blank" class="pricing-card__btn pricing-card__btn--outline">
+                    <a href="https://wa.me/5513998074576?text=Ol%C3%A1!%20Vim%20pelo%20site%20MaxTV%20e%20quero%20assinar%20o%20Plano%20Mensal." target="_blank" class="pricing-card__btn pricing-card__btn--outline">
                         Assinar Agora
                     </a>
                 </div>
                 <!-- 60 dias -->
                 <div class="pricing-card">
-                    <i class="pricing-card__icon fas fa-calendar-check"></i>
+                    <i class="pricing-card__icon fas fa-calendar-check" aria-hidden="true"></i>
                     <p class="pricing-card__duration">Bimestral</p>
                     <div class="pricing-card__price">
                         <span class="pricing-card__currency">R$</span>
                         <span class="pricing-card__value">35</span>
                     </div>
-                    <p class="pricing-card__info"><i class="fas fa-tag"></i> Economia 12%</p>
+                    <p class="pricing-card__info"><i class="fas fa-tag" aria-hidden="true"></i> Economia 12%</p>
                     <ul class="pricing-card__features">
-                        <li><i class="fas fa-tv"></i> 1.500+ Canais ao Vivo</li>
-                        <li><i class="fas fa-film"></i> 50.000+ Filmes e Séries</li>
-                        <li><i class="fas fa-video"></i> Full HD & 4K</li>
-                        <li><i class="fas fa-mobile-alt"></i> 1 Tela</li>
-                        <li><i class="fas fa-magic"></i> Ativação Automática</li>
+                        <li><i class="fas fa-tv" aria-hidden="true"></i> 1.500+ Canais ao Vivo</li>
+                        <li><i class="fas fa-film" aria-hidden="true"></i> 50.000+ Filmes e Séries</li>
+                        <li><i class="fas fa-video" aria-hidden="true"></i> Full HD & 4K</li>
+                        <li><i class="fas fa-mobile-alt" aria-hidden="true"></i> 1 Tela</li>
+                        <li><i class="fas fa-magic" aria-hidden="true"></i> Ativação Automática</li>
                     </ul>
-                    <a href="https://wa.me/5513998074576?text=Ol%C3%A1!%20Quero%20o%20plano%20Bimestral%20de%20R%2435!" target="_blank" class="pricing-card__btn pricing-card__btn--outline">
+                    <a href="https://wa.me/5513998074576?text=Ol%C3%A1!%20Vim%20pelo%20site%20MaxTV%20e%20quero%20assinar%20o%20Plano%20Bimestral." target="_blank" class="pricing-card__btn pricing-card__btn--outline">
                         Assinar Agora
                     </a>
                 </div>
                 <!-- 90 dias -->
                 <div class="pricing-card featured">
                     <span class="pricing-card__badge">Mais Popular</span>
-                    <i class="pricing-card__icon fas fa-star"></i>
                     <p class="pricing-card__duration">Trimestral</p>
                     <div class="pricing-card__price">
                         <span class="pricing-card__currency">R$</span>
                         <span class="pricing-card__value">50</span>
                     </div>
-                    <p class="pricing-card__info"><i class="fas fa-fire"></i> Economia 17%</p>
+                    <p class="pricing-card__info"><i class="fas fa-fire" aria-hidden="true"></i> Economia 17%</p>
                     <ul class="pricing-card__features">
-                        <li><i class="fas fa-tv"></i> 1.500+ Canais ao Vivo</li>
-                        <li><i class="fas fa-film"></i> 50.000+ Filmes e Séries</li>
-                        <li><i class="fas fa-video"></i> Full HD & 4K</li>
-                        <li><i class="fas fa-mobile-alt"></i> 1 Tela</li>
-                        <li><i class="fas fa-magic"></i> Ativação Automática</li>
+                        <li><i class="fas fa-tv" aria-hidden="true"></i> 1.500+ Canais ao Vivo</li>
+                        <li><i class="fas fa-film" aria-hidden="true"></i> 50.000+ Filmes e Séries</li>
+                        <li><i class="fas fa-video" aria-hidden="true"></i> Full HD & 4K</li>
+                        <li><i class="fas fa-mobile-alt" aria-hidden="true"></i> 1 Tela</li>
+                        <li><i class="fas fa-magic" aria-hidden="true"></i> Ativação Automática</li>
                     </ul>
-                    <a href="https://wa.me/5513998074576?text=Ol%C3%A1!%20Quero%20o%20plano%20Trimestral%20de%20R%2450!" target="_blank" class="pricing-card__btn pricing-card__btn--primary">
+                    <a href="https://wa.me/5513998074576?text=Ol%C3%A1!%20Vim%20pelo%20site%20MaxTV%20e%20quero%20assinar%20o%20Plano%20Trimestral." target="_blank" class="pricing-card__btn pricing-card__btn--primary">
                         Quero Este!
                     </a>
                 </div>
                 <!-- Anual -->
                 <div class="pricing-card pricing-card--annual">
                     <span class="pricing-card__badge pricing-card__badge--best">Melhor Custo</span>
-                    <i class="pricing-card__icon fas fa-crown"></i>
                     <p class="pricing-card__duration">Anual</p>
                     <div class="pricing-card__price">
                         <span class="pricing-card__currency">R$</span>
-                        <span class="pricing-card__value">150</span>
+                        <span class="pricing-card__value">160</span>
                     </div>
-                    <p class="pricing-card__info"><i class="fas fa-piggy-bank"></i> Só R$12/mês</p>
+                    <p class="pricing-card__info"><i class="fas fa-piggy-bank" aria-hidden="true"></i> Só R$13/mês</p>
                     <ul class="pricing-card__features">
-                        <li><i class="fas fa-tv"></i> 1.500+ Canais ao Vivo</li>
-                        <li><i class="fas fa-film"></i> 50.000+ Filmes e Séries</li>
-                        <li><i class="fas fa-video"></i> Full HD & 4K</li>
-                        <li><i class="fas fa-mobile-alt"></i> 1 Tela</li>
-                        <li><i class="fas fa-magic"></i> Ativação Automática</li>
+                        <li><i class="fas fa-tv" aria-hidden="true"></i> 1.500+ Canais ao Vivo</li>
+                        <li><i class="fas fa-film" aria-hidden="true"></i> 50.000+ Filmes e Séries</li>
+                        <li><i class="fas fa-video" aria-hidden="true"></i> Full HD & 4K</li>
+                        <li><i class="fas fa-mobile-alt" aria-hidden="true"></i> 1 Tela</li>
+                        <li><i class="fas fa-magic" aria-hidden="true"></i> Ativação Automática</li>
                     </ul>
-                    <a href="https://wa.me/5513998074576?text=Ol%C3%A1!%20Quero%20o%20plano%20ANUAL%20de%20R%24150!" target="_blank" class="pricing-card__btn pricing-card__btn--outline">
+                    <a href="https://wa.me/5513998074576?text=Ol%C3%A1!%20Vim%20pelo%20site%20MaxTV%20e%20quero%20assinar%20o%20Plano%20Anual." target="_blank" class="pricing-card__btn pricing-card__btn--outline">
                         Assinar Agora
                     </a>
                 </div>
@@ -2721,7 +3077,7 @@
     </section>
 
     <!-- DEPOIMENTOS -->
-    <section class="testimonials">
+    <section class="testimonials" aria-label="Avaliações de clientes">
         <div class="container">
             <div class="section-header fade-up">
                 <p class="section-header__subtitle">O que dizem nossos clientes</p>
@@ -2730,7 +3086,7 @@
             <div class="testimonials__grid fade-up">
                 <div class="testimonial-card">
                     <div class="testimonial-card__stars">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
                     </div>
                     <p class="testimonial-card__text">"Melhor IPTV que já usei. O sinal é estável e a qualidade é incrível. Uso na Smart TV e no celular sem nenhuma travada."</p>
                     <div class="testimonial-card__user">
@@ -2743,7 +3099,7 @@
                 </div>
                 <div class="testimonial-card">
                     <div class="testimonial-card__stars">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
                     </div>
                     <p class="testimonial-card__text">"O suporte é nota 10! Me ajudaram a configurar tudo em 5 minutos no WhatsApp. Recomendo demais!"</p>
                     <div class="testimonial-card__user">
@@ -2756,7 +3112,7 @@
                 </div>
                 <div class="testimonial-card">
                     <div class="testimonial-card__stars">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
                     </div>
                     <p class="testimonial-card__text">"Cancelei Netflix, Prime, HBO e pago muito menos aqui. Tem tudo atualizado na mesma semana do lançamento. Sensacional."</p>
                     <div class="testimonial-card__user">
@@ -2772,7 +3128,7 @@
     </section>
 
     <!-- FAQ -->
-    <section class="faq" id="faq">
+    <section class="faq" id="faq" aria-label="Perguntas frequentes">
         <div class="container">
             <div class="section-header fade-up">
                 <p class="section-header__subtitle">Tire suas dúvidas</p>
@@ -2780,64 +3136,64 @@
             </div>
             <div class="faq__list fade-up">
                 <div class="faq__item">
-                    <div class="faq__question">
+                    <button type="button" class="faq__question" aria-expanded="false">
                         Como funciona o teste grátis?
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
+                        <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                    </button>
                     <div class="faq__answer">
-                        <div class="faq__answer-inner">É simples! Você entra no WhatsApp, nosso bot gera o teste automaticamente na hora com login, senha e todas as informações. Você recebe tudo pronto para usar em poucos segundos. <a href="https://wa.me/5513998074576?text=QUERO%20MEU%20TESTE%20GR%C3%81TIS" target="_blank">Leia mais aqui</a></div>
+                        <div class="faq__answer-inner">É simples! Você entra no WhatsApp, nosso bot gera o teste automaticamente na hora com login, senha e todas as informações. Você recebe tudo pronto para usar em poucos segundos. <a href="https://wa.me/5513998074576?text=Ol%C3%A1!%20Vim%20pelo%20site%20MaxTV%20e%20gostaria%20de%20conhecer%20os%20planos." target="_blank">Leia mais aqui</a></div>
                     </div>
                 </div>
                 <div class="faq__item">
-                    <div class="faq__question">
+                    <button type="button" class="faq__question" aria-expanded="false">
                         O que é IPTV e por que é o mais popular?
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
+                        <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                    </button>
                     <div class="faq__answer">
                         <div class="faq__answer-inner">IPTV é a tecnologia de streaming mais usada no mundo! Você assiste TV, filmes e séries pela internet. É mais barato que operadoras tradicionais e funciona em qualquer dispositivo. O IPTV é o favorito porque oferece muita variedade de conteúdo por um preço acessível.</div>
                     </div>
                 </div>
                 <div class="faq__item">
-                    <div class="faq__question">
+                    <button type="button" class="faq__question" aria-expanded="false">
                         Funciona em qualquer TV?
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
+                        <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                    </button>
                     <div class="faq__answer">
                         <div class="faq__answer-inner">Sim! Funciona em Smart TV (Samsung, LG, TCL, Philco, etc.), TV Box, celular, tablet e computador. Para TVs antigas sem internet, basta conectar um TV Box ou Chromecast. Fornecemos os melhores apps do mercado para você escolher.</div>
                     </div>
                 </div>
                 <div class="faq__item">
-                    <div class="faq__question">
+                    <button type="button" class="faq__question" aria-expanded="false">
                         Quais aplicativos vocês oferecem?
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
+                        <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                    </button>
                     <div class="faq__answer">
                         <div class="faq__answer-inner">Temos vários apps: IPTV, P2P e apps próprios. Diferente da concorrência que depende de um só app, aqui você escolhe o que mais gostar! Fornecemos os links de todos e ajudamos a instalar o melhor para seu aparelho.</div>
                     </div>
                 </div>
                 <div class="faq__item">
-                    <div class="faq__question">
+                    <button type="button" class="faq__question" aria-expanded="false">
                         Como funciona o pagamento?
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
+                        <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                    </button>
                     <div class="faq__answer">
-                        <div class="faq__answer-inner">Quando você gera o teste pelo WhatsApp, já recebe tudo completo: o acesso com códigos de aplicativos parceiros, usuário e senha, e também o link de pagamento de ativação automática junto do teste. Leia o texto do teste que foi gerado por completo, pois tem muitas informações importantes. Assim que acabar o seu teste de 4 horas, basta pagar pelo link de pagamento que foi gerado junto do teste grátis de 4 horas, que vai ativar seu plano automaticamente na hora após o pagamento ser feito via Pix de forma segura! Mas se precisar de mais de uma tela (pontos) adicionais, como 2, 3 ou 4, o recomendado é falar com um atendente e enviar Pix pela chave, aí é só aguardar o atendente ativar manualmente. O recomendado é pagar pelo link de pagamento caso o teste acabe e não tenha atendente disponível no momento! O teste é só para uma tela! Quer mais telas? Cada tela adicional tem um valor adicional ao plano, dúvida? É só falar com um atendente. <a href="https://wa.me/5513998074576?text=QUERO%20ASSINAR" target="_blank">Clique aqui.</a></div>
+                        <div class="faq__answer-inner">Quando você gera o teste pelo WhatsApp, já recebe tudo completo: o acesso com códigos de aplicativos parceiros, usuário e senha, e também o link de pagamento de ativação automática junto do teste. Leia o texto do teste que foi gerado por completo, pois tem muitas informações importantes. Assim que acabar o seu teste de 4 horas, basta pagar pelo link de pagamento que foi gerado junto do teste grátis de 4 horas, que vai ativar seu plano automaticamente na hora após o pagamento ser feito via Pix de forma segura! Mas se precisar de mais de uma tela (pontos) adicionais, como 2, 3 ou 4, o recomendado é falar com um atendente e enviar Pix pela chave, aí é só aguardar o atendente ativar manualmente. O recomendado é pagar pelo link de pagamento caso o teste acabe e não tenha atendente disponível no momento! O teste é só para uma tela! Quer mais telas? Cada tela adicional tem um valor adicional ao plano, dúvida? É só falar com um atendente. <a href="https://wa.me/5513998074576?text=Ol%C3%A1!%20Vim%20pelo%20site%20MaxTV%20e%20gostaria%20de%20conhecer%20os%20planos." target="_blank">Clique aqui.</a></div>
                     </div>
                 </div>
                 <div class="faq__item">
-                    <div class="faq__question">
+                    <button type="button" class="faq__question" aria-expanded="false">
                         Precisa de internet boa?
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
+                        <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                    </button>
                     <div class="faq__answer">
                         <div class="faq__answer-inner">Para funcionar bem, recomendamos no mínimo 10MB de internet. Com 25MB ou mais, você aproveita Full HD e 4K sem travamentos. A maioria das conexões brasileiras funciona perfeitamente.</div>
                     </div>
                 </div>
                 <div class="faq__item">
-                    <div class="faq__question">
+                    <button type="button" class="faq__question" aria-expanded="false">
                         Posso cancelar a qualquer momento?
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
+                        <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                    </button>
                     <div class="faq__answer">
                         <div class="faq__answer-inner">Sim! Não tem Fidelidade. Você assina mês a mês e pode cancelar quando quiser. Se quiser continuar, é só renovar quando acabar. Simples assim!</div>
                     </div>
@@ -2847,7 +3203,7 @@
     </section>
 
     <!-- CONTATO -->
-    <section class="contact" id="contato">
+    <section class="contact" id="contato" aria-label="Contato">
         <div class="container">
             <div class="section-header fade-up">
                 <p class="section-header__subtitle">Fale conosco</p>
@@ -2859,9 +3215,9 @@
                     <h3>Fale com a MaxTV</h3>
                     <p>Entre em contato pelo WhatsApp para tirar dúvidas, ativar seu teste ou escolher seu plano.</p>
                     <div class="contact__channels">
-                        <a class="contact__channel" href="https://wa.me/5513998074576?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20preciso%20de%20ajuda." target="_blank">
+                        <a class="contact__channel" href="https://wa.me/5513998074576?text=Ol%C3%A1!%20Vim%20pelo%20site%20MaxTV%20e%20gostaria%20de%20conhecer%20os%20planos." target="_blank">
                             <div class="contact__channel-icon contact__channel-icon--whatsapp">
-                                <i class="fab fa-whatsapp"></i>
+                                <i class="fab fa-whatsapp" aria-hidden="true"></i>
                             </div>
                             <div>
                                 <div class="contact__channel-label">WhatsApp</div>
@@ -2870,7 +3226,7 @@
                         </a>
                         <div class="contact__channel">
                             <div class="contact__channel-icon contact__channel-icon--hours">
-                                <i class="fas fa-clock"></i>
+                                <i class="fas fa-clock" aria-hidden="true"></i>
                             </div>
                             <div>
                                 <div class="contact__channel-label">Horário</div>
@@ -2879,7 +3235,7 @@
                         </div>
                         <div class="contact__channel">
                             <div class="contact__channel-icon contact__channel-icon--support">
-                                <i class="fas fa-bolt"></i>
+                                <i class="fas fa-bolt" aria-hidden="true"></i>
                             </div>
                             <div>
                                 <div class="contact__channel-label">Atendimento</div>
@@ -2889,34 +3245,34 @@
                     </div>
                 </div>
                 <form class="contact__form" id="contactForm">
-                    <h4><i class="fas fa-paper-plane"></i> Envie sua Mensagem</h4>
+                    <h4><i class="fas fa-paper-plane" aria-hidden="true"></i> Envie sua Mensagem</h4>
                     <div class="form-group">
-                        <label>Seu Nome</label>
-                        <input type="text" id="formName" placeholder="Digite seu nome completo" required>
+                        <label for="formName">Seu Nome</label>
+                        <input type="text" id="formName" placeholder="Digite seu nome completo" autocomplete="name" required>
                     </div>
                     <div class="form-group">
-                        <label>WhatsApp</label>
-                        <input type="tel" id="formPhone" placeholder="(XX) XXXXX-XXXX" required>
+                        <label for="formPhone">WhatsApp</label>
+                        <input type="tel" id="formPhone" placeholder="(XX) XXXXX-XXXX" autocomplete="tel" inputmode="tel" required>
                     </div>
                     <div class="form-group">
-                        <label>Interesse</label>
+                        <label for="formInterest">Interesse</label>
                         <select id="formInterest" required>
                             <option value="">Selecione uma opção</option>
                             <option value="Teste Grátis">Quero um teste grátis de 4h</option>
                             <option value="Plano 30 dias">Plano Mensal (R$20)</option>
                             <option value="Plano 60 dias">Plano Bimestral (R$35)</option>
                             <option value="Plano 90 dias">Plano Trimestral (R$50)</option>
-                            <option value="Plano Anual">Plano Anual (R$150)</option>
+                            <option value="Plano Anual">Plano Anual (R$160)</option>
                             <option value="Dúvida">Tenho uma dúvida</option>
                             <option value="Suporte">Dúvidas sobre ativação</option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <label>Mensagem</label>
+                        <label for="formMessage">Mensagem</label>
                         <textarea id="formMessage" placeholder="Escreva sua mensagem..."></textarea>
                     </div>
                     <button type="submit" class="btn btn-primary">
-                        <i class="fab fa-whatsapp"></i> Enviar via WhatsApp
+                        <i class="fab fa-whatsapp" aria-hidden="true"></i> Enviar via WhatsApp
                     </button>
                 </form>
             </div>
@@ -2944,7 +3300,7 @@
                     <div class="footer__col">
                         <p class="footer__col-title">Atendimento</p>
                         <ul>
-                            <li><a href="https://wa.me/5513998074576" target="_blank">WhatsApp</a></li>
+                            <li><a href="https://wa.me/5513998074576?text=Ol%C3%A1!%20Vim%20pelo%20site%20MaxTV%20e%20gostaria%20de%20conhecer%20os%20planos." target="_blank">WhatsApp</a></li>
                             <li><a href="#contato">Contato</a></li>
                             <li><a href="#diferenciais">Diferenciais</a></li>
                         </ul>
@@ -2959,14 +3315,16 @@
     </footer>
 
     <!-- BOTÃO FLUTUANTE WHATSAPP -->
-    <a class="whatsapp-float" href="https://wa.me/5513998074576?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20MaxTV%20e%20quero%20saber%20mais!" target="_blank" title="Fale conosco no WhatsApp">
-        <i class="fab fa-whatsapp"></i>
+    <a class="whatsapp-float" href="https://wa.me/5513998074576?text=Ol%C3%A1!%20Vim%20pelo%20site%20MaxTV%20e%20quero%20meu%20teste%20gr%C3%A1tis%20de%204%20horas!" target="_blank" title="Fale conosco no WhatsApp">
+        <i class="fab fa-whatsapp" aria-hidden="true"></i>
     </a>
 
     <!-- ==========================================
          JAVASCRIPT
          ========================================== -->
     <script>
+        const WHATSAPP_NUMBER = '5513998074576';
+
         // === Film Data (Atualizado via IMDB API) ===
         const movies = [
             { title: "Project Hail Mary", year: "2026", rating: "8.4", quality: "4K", genre: "filmes", isNew: true, poster: "https://m.media-amazon.com/images/M/MV5BNTkwNzJiYTctNzI3NC00NjE1LTlhYjktY2Q5MTdmMWFmNzcxXkEyXkFqcGc@._V1_QL75_UX380_CR0,0,380,562_.jpg" },
@@ -2991,10 +3349,10 @@
             const card = document.createElement('div');
             card.className = 'release-card';
             card.innerHTML = `
-                <img src="${movie.poster}" alt="${movie.title}" class="release-card__poster" loading="lazy">
+                <img decoding="async" src="${movie.poster}" alt="${movie.title}" class="release-card__poster" loading="lazy">
                 ${movie.isNew ? '<div class="release-card__badge-new">NOVO</div>' : ''}
-                <div class="release-card__rating"><i class="fas fa-star"></i> ${movie.rating}</div>
-                <div class="release-card__play"><i class="fas fa-play"></i></div>
+                <div class="release-card__rating"><i class="fas fa-star" aria-hidden="true"></i> ${movie.rating}</div>
+                <div class="release-card__play"><i class="fas fa-play" aria-hidden="true"></i></div>
                 <div class="release-card__overlay">
                     <div class="release-card__title">${movie.title}</div>
                     <div class="release-card__meta">
@@ -3014,7 +3372,6 @@
             grid.innerHTML = '';
 
             filtered.forEach(movie => grid.appendChild(createMovieCard(movie)));
-            filtered.forEach(movie => grid.appendChild(createMovieCard(movie)));
         }
         renderMovies();
 
@@ -3028,9 +3385,21 @@
         });
 
         // === Navbar Scroll ===
+        const navLinks = Array.from(document.querySelectorAll('.navbar__links a[href^="#"]'));
         window.addEventListener('scroll', () => {
             const navbar = document.getElementById('navbar');
             navbar.classList.toggle('scrolled', window.scrollY > 50);
+
+            const marker = window.scrollY + 140;
+            let current = null;
+            navLinks.forEach(link => {
+                const target = document.querySelector(link.getAttribute('href'));
+                if (target && (target.getBoundingClientRect().top + window.scrollY) <= marker) current = link;
+            });
+            navLinks.forEach(link => {
+                if (link === current) link.setAttribute('aria-current', 'page');
+                else link.removeAttribute('aria-current');
+            });
         }, { passive: true });
 
         // === Mobile Menu ===
@@ -3067,6 +3436,9 @@
             else openMenu();
         });
         menuClose.addEventListener('click', closeMenu);
+        mobileMenu.addEventListener('click', (e) => {
+            if (e.target === mobileMenu) closeMenu();
+        });
         mobileMenu.querySelectorAll('a[href]').forEach(link => {
             link.addEventListener('click', (e) => {
                 const href = link.getAttribute('href');
@@ -3109,41 +3481,75 @@
             if (e.matches) closeMenu();
         });
 
-        // === Video Play ===
+        // === Video Play + máscara ===
+        const showcaseVideo = document.getElementById('showcaseVideo');
+        const videoPlayBtn = document.getElementById('videoPlayBtn');
+        const videoMask = document.getElementById('videoMask');
+
+        function hideVideoMask() {
+            videoMask.classList.add('is-hidden');
+            videoMask.setAttribute('aria-hidden', 'true');
+            videoMask.inert = true;
+        }
+
+        function showVideoMask() {
+            videoMask.classList.remove('is-hidden');
+            videoMask.removeAttribute('aria-hidden');
+            videoMask.inert = false;
+        }
+
         function playVideo() {
-            const video = document.getElementById('showcaseVideo');
-            const playBtn = document.getElementById('videoPlayBtn');
-            if (video.paused) {
-                video.play();
-                playBtn.classList.add('hidden');
+            if (!showcaseVideo.paused) return;
+            const playback = showcaseVideo.play();
+            hideVideoMask();
+
+            if (document.activeElement === videoPlayBtn) {
+                showcaseVideo.focus({ preventScroll: true });
+            }
+
+            if (playback && typeof playback.catch === 'function') {
+                playback.catch(() => {
+                    showVideoMask();
+                    videoPlayBtn.focus({ preventScroll: true });
+                });
             }
         }
-        document.getElementById('showcaseVideo').addEventListener('click', () => {
-            const video = document.getElementById('showcaseVideo');
-            const playBtn = document.getElementById('videoPlayBtn');
-            if (!video.paused) {
-                video.pause();
-                playBtn.classList.remove('hidden');
-            }
-        });
+
+        videoPlayBtn.addEventListener('click', playVideo);
 
         // === FAQ Accordion ===
-        document.querySelectorAll('.faq__question').forEach(q => {
-            q.addEventListener('click', () => {
-                const item = q.parentElement;
-                const answer = item.querySelector('.faq__answer');
-                const inner = answer.querySelector('.faq__answer-inner');
+        const faqItems = document.querySelectorAll('.faq__item');
+        faqItems.forEach((item, index) => {
+            const question = item.querySelector('.faq__question');
+            const answer = item.querySelector('.faq__answer');
+            const inner = answer.querySelector('.faq__answer-inner');
+            const questionId = `faq-question-${index + 1}`;
+            const answerId = `faq-answer-${index + 1}`;
+
+            question.id = questionId;
+            question.setAttribute('aria-controls', answerId);
+            answer.id = answerId;
+            answer.setAttribute('role', 'region');
+            answer.setAttribute('aria-labelledby', questionId);
+            answer.inert = !item.classList.contains('active');
+            question.setAttribute('aria-expanded', item.classList.contains('active') ? 'true' : 'false');
+
+            question.addEventListener('click', () => {
                 const isActive = item.classList.contains('active');
 
-                // Close all
-                document.querySelectorAll('.faq__item').forEach(i => {
-                    i.classList.remove('active');
-                    i.querySelector('.faq__answer').style.maxHeight = '0';
+                faqItems.forEach(other => {
+                    other.classList.remove('active');
+                    const otherAnswer = other.querySelector('.faq__answer');
+                    otherAnswer.style.maxHeight = '0';
+                    otherAnswer.inert = true;
+                    other.querySelector('.faq__question').setAttribute('aria-expanded', 'false');
                 });
 
                 if (!isActive) {
                     item.classList.add('active');
+                    answer.inert = false;
                     answer.style.maxHeight = inner.scrollHeight + 20 + 'px';
+                    question.setAttribute('aria-expanded', 'true');
                 }
             });
         });
@@ -3160,14 +3566,34 @@
         document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
         // === Countdown Timer (4 horas a partir do primeiro acesso) ===
+        function readTimerEnd() {
+            try {
+                return localStorage.getItem('maxtv_timer_end');
+            } catch (error) {
+                return null;
+            }
+        }
+
+        function writeTimerEnd(value) {
+            try {
+                localStorage.setItem('maxtv_timer_end', String(value));
+            } catch (error) {
+                // Storage bloqueado (modo privado/iframe): o timer segue em memória.
+            }
+        }
+
         function startTimer() {
-            let endTime = localStorage.getItem('maxtv_timer_end');
+            if (!document.getElementById('timerHours')) return;
+
+            let endTime = readTimerEnd();
             if (!endTime || parseInt(endTime) < Date.now()) {
                 endTime = Date.now() + (4 * 60 * 60 * 1000);
-                localStorage.setItem('maxtv_timer_end', String(endTime));
+                writeTimerEnd(endTime);
             } else {
                 endTime = parseInt(endTime);
             }
+
+            let intervalId = null;
 
             function update() {
                 const remaining = endTime - Date.now();
@@ -3175,6 +3601,7 @@
                     document.getElementById('timerHours').textContent = '00';
                     document.getElementById('timerMinutes').textContent = '00';
                     document.getElementById('timerSeconds').textContent = '00';
+                    if (intervalId) clearInterval(intervalId);
                     return;
                 }
                 const hours = Math.floor(remaining / 3600000);
@@ -3186,7 +3613,7 @@
             }
 
             update();
-            setInterval(update, 1000);
+            if (endTime - Date.now() > 0) intervalId = setInterval(update, 1000);
         }
         startTimer();
 
@@ -3207,7 +3634,7 @@
                 whatsappMsg += `*Mensagem:* ${encodeURIComponent(message)}`;
             }
 
-            window.open(`https://wa.me/5513998074576?text=${whatsappMsg}`, '_blank');
+            window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${whatsappMsg}`, '_blank');
         });
 
         // === Phone Mask ===
